@@ -4,8 +4,6 @@ Find & Host Parties around you on an interactive google maps interface. Filter b
 
 ## Links
 
-- Source Code: https://github.com/leighhalliday/google-maps-react-2020
-- Video: https://youtu.be/WZcxJGmLbSo
 - Google Maps React: https://www.npmjs.com/package/@react-google-maps/api
 - Google Places React: https://www.npmjs.com/package/use-places-autocomplete
 - Reach Combobox: https://reacttraining.com/reach-ui/combobox/
