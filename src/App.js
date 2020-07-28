@@ -1,4 +1,5 @@
 import React from "react";
+import './index.css'
 import {
   GoogleMap,
   useLoadScript,
@@ -19,7 +20,7 @@ import {
 import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
-import mapStyles from "./mapStyles";
+import mapStyles from "./mapStyles.js";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -32,20 +33,39 @@ const options = {
   zoomControl: true,
 };
 const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+  lat: 41.3851,
+  lng: 2.1734,
 };
+
+const image =
+    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+    // "/Users/mohammedabdulkhader/otherJSexercises/DA-PARTY-FORECAST-APP/public/noun_Flower_308192.png"
+    // '/public/edm.svg'
 
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
 
+  const [parties, setParties] = React.useState([]);
+  const [selected, setSelected] = React.useState(null);
+/*
+  // make initial getallParties api call here to load all the parties
+  React.useEffect(()=> {
+    const getDataAxios = async () => {
+      const {data:parties} = await axios.get('http://localhost:3001/parties');
+      const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
+
+      setParties(filteredParties);
+
+    }
+    getDataAxios(); //calling the above created function
+  },[])
+*/
   const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
+    // mkae post request to api here
+    setParties((current) => [
       ...current,
       {
         lat: e.latLng.lat(),
@@ -62,7 +82,7 @@ export default function App() {
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
+    mapRef.current.setZoom(19);
   }, []);
 
   if (loadError) return "Error";
@@ -70,37 +90,52 @@ export default function App() {
 
   return (
     <div>
-      <h1>
-        Bears{" "}
-        <span role="img" aria-label="tent">
-          ⛺️
-        </span>
-      </h1>
+      <div className="options">
+        <h1 className="logo" style={{color: "yellow", fontFamily: "avenir"}}>
+          THE PARTY FORECAST APP{" "}
+          <span role="img" aria-label="tent">
+            🕺🏻
+          </span>
+        </h1>
 
-      <Locate panTo={panTo} />
-      <Search panTo={panTo} />
+        <Locate panTo={panTo} />
+        <Search panTo={panTo} />
+      </div>
+
 
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={16}
         center={center}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
+        clickableIcons={true}
       >
-        {markers.map((marker) => (
+        {parties.map((party) => (
           <Marker
-            key={`${marker.lat}-${marker.lng}`}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            draggable={true}
+            // title={'party'}
+            // label={'party'}
+            zIndex={10}
+            animation = {window.google.maps.Animation.BOUNCE}
+            key={`${party.lat}-${party.lng}`+ Math.random()*100}
+            position={{ lat: party.lat, lng: party.lng }}
             onClick={() => {
-              setSelected(marker);
+              setSelected(party);
             }}
+            // icon = {{
+            //   path: new window.google.maps.SymbolPath.CIRCLE,
+            //   scale: 10
+            // }}
+            // icon={image}
             icon={{
-              url: `/bear.svg`,
+              url: `https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png`,
+              // url:'DA-PARTY-FORECAST-APP/public/noun_Flower_308192.png',
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(30, 30),
+              scaledSize: new window.google.maps.Size(50, 50),
             }}
           />
         ))}
@@ -112,14 +147,19 @@ export default function App() {
               setSelected(null);
             }}
           >
+          {/* TODO insert createParty component here for client route */}
+          {/* TODO insert partyDetail component here for users route */}
             <div>
               <h2>
                 <span role="img" aria-label="bear">
-                  🐻
+                  😈
                 </span>{" "}
-                Alert
+                PARTY ALERT!
               </h2>
-              <p>Spotted {formatRelative(selected.time, new Date())}</p>
+              <p>Party {formatRelative(selected.time, new Date())}</p>
+              <p>Venue : RAZZMATTAZZ</p>
+              <p>Genre : TECHNO</p>
+              <p>ARTIST : DISCLOSURE</p>
             </div>
           </InfoWindow>
         ) : null}
@@ -133,7 +173,7 @@ function Locate({ panTo }) {
     <button
       className="locate"
       onClick={() => {
-        navigator.geolocation.getCurrentPosition(
+        window.navigator.geolocation.getCurrentPosition(
           (position) => {
             panTo({
               lat: position.coords.latitude,
@@ -158,7 +198,7 @@ function Search({ panTo }) {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      location: { lat: () => 43.6532, lng: () => -79.3832 },
+      location: { lat: () => 41.3851, lng: () => 2.1734 },
       radius: 100 * 1000,
     },
   });
@@ -189,13 +229,13 @@ function Search({ panTo }) {
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder="Search your location"
+          placeholder="Search for location or click on compass"
         />
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
+                <ComboboxOption key={id + Math.random()*100 } value={description} />
               ))}
           </ComboboxList>
         </ComboboxPopover>
