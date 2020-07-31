@@ -3,20 +3,43 @@ const mongoose = require('./index.js');
 const Schema = mongoose.Schema;
 
 const partySchema = new Schema({
-  title: {
+  artists: {
     type:String,
-    required:true,
-    unique:true,
+    required:false,
+    unique:false,
   },
   venue: {
     type:String,
-    required:true,
+    required:false,
   },
   date: {
     type:Date,
     default: Date.now(),
     required:false,
-  }
+  },
+  genre: {
+    type:String,
+    required:false,
+  },
+  lat: {
+    type:Number,
+    required:false,
+  },
+  lng: {
+    type:Number,
+    required:false,
+  },
+  iconURL: {
+    type:String,
+    required:false,
+  },
+  instagram: {
+    type:String,
+    required:false,
+  },
+  score: {
+    type: Number , default: 0, required: false
+  },
 });
 
 const Party = mongoose.model('Party',partySchema);

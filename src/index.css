@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&family=Rubik+Mono+One&display=swap");
+* {
+    margin: 0;
+    font-family: "Avenir";
+}
+
 body {
     margin: 0;
-    font-family: "Rubik Mono One", sans-serif;
+    font-family: "Avenir", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 18px;
@@ -9,6 +14,33 @@ body {
 
 code {
     font-family: "Rubik Mono One", sans-serif;
+}
+
+.infowindow {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.infowindow button {
+    border: none;
+    border-radius: 4%;
+    padding: 4px;
+    margin: 2px;
+}
+
+.going {
+    background-color: green;
+}
+
+.maybe {
+    background-color: yellow;
+}
+
+.not {
+    background-color: red;
 }
 
 h1 {
@@ -22,26 +54,49 @@ h1 {
     font-family: "Rubik Mono One", sans-serif;
 }
 
-.search {
+#ui_search {
+    background-color: black;
+    /* position: absolute */
+    width: 28vw;
+    padding-left: 0.5vw;
+}
+
+#search_icon {
+    color: white;
+    z-index: 100;
     position: absolute;
     top: 1rem;
+    left: 92%;
+}
+
+.search {
+    position: absolute;
+    top: 0.9rem;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 450px;
     z-index: 10;
+    border: none;
+    outline: none;
+    /* background: yellow; */
 }
 
 .search input {
     padding: 0.5rem;
     font-size: 1.5rem;
     width: 100%;
+    border: none;
+    outline: none;
+    background: lightgray;
+    font-size: 20pt;
+    border-radius: 1%;
 }
 
 .locate {
     position: absolute;
-    top: 1rem;
-    left: 71.5%;
+    top: 1.55rem;
+    left: 63%;
     background: none;
     border: none;
     z-index: 10;
@@ -53,9 +108,344 @@ h1 {
 }
 
 .logo {
+    position: absolute;
+    display: none;
+    top: -3.5rem;
+    left: 22%;
+    background: none;
+    border: none;
+    z-index: 10;
+}
+
+.widget2 {
+    position: absolute;
+    height: 100vh;
+    width: 10vw;
+    background-color: white;
+    z-index: 20;
+    left: -8.5rem;
+}
+
+
+/* .widget2:hover+.widget {
+    display: block;
+} */
+
+.widget2:hover {
+    left: 0;
+}
+
+.widget {
+    margin: 1px;
+    top: 25rem;
+    width: 7.5rem;
+    left: 0rem;
+    position: absolute;
+    z-index: 20;
+    padding: 0;
+    height: 40px;
+    justify-content: space-between;
+    box-sizing: border-box;
+    display: block;
+}
+
+.widget h2 {
+    background-color: yellow;
+    color: black;
+    margin: 5px;
+    margin-left: 0;
+    border-radius: 4%;
+    display: flex;
+    text-align: center;
+}
+
+.form {
     display: flex;
     flex-direction: column;
-    max-width: 30%;
-    flex-wrap: wrap;
-    font-family: "Rubik Mono One", sans-serif;
+}
+
+
+/* copied css */
+
+
+/* Style the links inside the sidenav */
+
+#mySidenav a {
+    z-index: 40;
+    position: absolute;
+    /* Position them relative to the browser window */
+    left: -80px;
+    /* Position them outside of the screen */
+    transition: 0.3s;
+    /* Add transition on hover */
+    padding: 15px;
+    /* 15px padding */
+    width: 100px;
+    /* Set a specific width */
+    text-decoration: none;
+    /* Remove underline */
+    font-size: 20px;
+    /* Increase font size */
+    color: white;
+    /* White text color */
+    border-radius: 0 5px 5px 0;
+    /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+    left: 0;
+    /* On mouse-over, make the elements appear as they should */
+}
+
+
+/* The about link: 20px from the top with a green background */
+
+#about {
+    top: 12%;
+    background-color: #4ea8de;
+}
+
+#blog {
+    top: 30%;
+    background-color: #5390d9;
+    /* Blue */
+}
+
+#projects {
+    top: 42%;
+    background-color: #5e60ce;
+    /* Red */
+}
+
+#contact {
+    top: 50%;
+    background-color: #6930c3;
+    /* Light Black */
+}
+
+
+/* for genre filter */
+
+.filter {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 2.29rem;
+    left: 68%;
+    background: none;
+    border: none;
+    z-index: 10;
+    width: 10vw;
+}
+
+.filter select {
+    width: 170px;
+    height: 35px;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px #999;
+    background: #eee;
+    border: none;
+    outline: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.filter label {
+    position: relative;
+}
+
+.filter label:after {
+    content: "<>";
+    font: 12px "Consolas", monospace;
+    color: #666;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: -16px;
+    top: 8px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #ddd;
+    position: absolute;
+    pointer-events: none;
+}
+
+
+/* .filter label:before {
+    content: "";
+    right: 0px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    position: absolute;
+    pointer-events: none;
+    display: block;
+} */
+
+
+/* for date filter */
+
+.filterDate {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 2.29rem;
+    left: 80.5%;
+    background: none;
+    border: none;
+    z-index: 10;
+    width: 9vw;
+}
+
+.filterDate select {
+    width: 130px;
+    height: 35px;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px #999;
+    background: #eee;
+    border: none;
+    outline: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.filterDate label {
+    position: relative;
+}
+
+.filterDate label:after {
+    content: "<>";
+    font: 11px "Consolas", monospace;
+    color: white;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 10px;
+    z-index: 1000;
+    top: 8px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #ddd;
+    position: absolute;
+    pointer-events: none;
+}
+
+
+/* .filterDate label:before {
+    content: "";
+    right: 0px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    position: absolute;
+    pointer-events: none;
+    display: block;
+} */
+
+.filterTheme {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 2.29rem;
+    left: 89.9%;
+    background: none;
+    border: none;
+    z-index: 10;
+    width: 9vw;
+}
+
+.filterTheme select {
+    width: 136px;
+    height: 35px;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px #999;
+    background: #eee;
+    border: none;
+    outline: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.filterTheme label {
+    position: relative;
+}
+
+.filterTheme label:after {
+    content: "<>";
+    font: 11px "Consolas", monospace;
+    color: white;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 10px;
+    z-index: 1000;
+    top: 8px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #ddd;
+    position: absolute;
+    pointer-events: none;
+}
+
+
+/* making markers bounce */
+
+.bounce {
+    -webkit-animation: bounce 2s;
+    animation: bounce 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bounce {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+    60% {
+        -webkit-transform: translateY(-12px);
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    25%,
+    50%,
+    75%,
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+    60% {
+        -webkit-transform: translateY(-12px);
+        transform: translateY(-12px);
+    }
+}
+
+.button_list {
+    display: flex;
 }

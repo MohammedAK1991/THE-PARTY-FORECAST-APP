@@ -28,8 +28,8 @@ const mapContainerStyle = {
   width: "100vw",
 };
 const options = {
-  styles: mapStyles,
-  disableDefaultUI: true,
+  // styles: mapStyles,
+  disableDefaultUI: false,
   zoomControl: true,
 };
 const center = {
@@ -43,12 +43,39 @@ const image =
     // '/public/edm.svg'
 
 export default function App() {
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-  const [parties, setParties] = React.useState([]);
+  const [parties, setParties] = React.useState([
+    {
+      lat: 41.3951,
+      lng: 2.1934,
+      time: new Date(),
+      venue: "RAZZMATAZZ",
+      genre: "EDM",
+      artist: "DISCLOSURE"
+    },
+    {
+      lat: 41.38951,
+      lng: 2.18934,
+      time: new Date(),
+      venue: "APOLO",
+      genre: "TECHNO",
+      artist: "DISCLOSURE"
+    },
+    {
+      lat: 41.38851,
+      lng: 2.18834,
+      time: new Date(),
+      venue: "PACHA",
+      genre: "EDM",
+      artist: "ROCK"
+    },
+  ]);
+
   const [selected, setSelected] = React.useState(null);
 /*
   // make initial getallParties api call here to load all the parties
@@ -82,7 +109,7 @@ export default function App() {
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(19);
+    mapRef.current.setZoom(17);
   }, []);
 
   if (loadError) return "Error";
@@ -157,9 +184,9 @@ export default function App() {
                 PARTY ALERT!
               </h2>
               <p>Party {formatRelative(selected.time, new Date())}</p>
-              <p>Venue : RAZZMATTAZZ</p>
-              <p>Genre : TECHNO</p>
-              <p>ARTIST : DISCLOSURE</p>
+              <p>Venue : {selected.venue}</p>
+              <p>Genre : {selected.genre}</p>
+              <p>ARTIST : {selected.artist}</p>
             </div>
           </InfoWindow>
         ) : null}

@@ -13,9 +13,9 @@ exports.getAllParties = async (req,res) => {
 
 exports.addParty = async (req,res) => {
 
-  const {title,venue, date} = req.body;
+  const {artists,venue,genre, date, lat, lng, iconURL, instagram} = req.body;
 
-  await Party.create ({title,venue,date},
+  Party.create ({artists,venue, date, genre,lat, lng, iconURL, instagram},
     (error,newParty) => {
       if (error) {
         console.log(error);
@@ -34,6 +34,45 @@ exports.deleteParty = async (req,res) => {
     .then(() => res.json('Party deleted'))
     .catch(err => res.status(400).json('Error!!:',err));
 };
+
+exports.goingToParty = async (req,res) => {
+
+  Party.findById(req.params.id)
+    .then(party => {
+      party.score++;
+
+      party.save()
+        .then(() => res.json(party))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+}
+
+exports.maybeGoingToParty = async (req,res) => {
+
+  Party.findById(req.params.id)
+    .then(party => {
+      party.score = party.score + .3;
+
+      party.save()
+        .then(() => res.json(party))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+}
+
+exports.notGoingToParty = async (req,res) => {
+
+  Party.findById(req.params.id)
+    .then(party => {
+      party.score--;
+
+      party.save()
+        .then(() => res.json(party))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+}
 
 
 

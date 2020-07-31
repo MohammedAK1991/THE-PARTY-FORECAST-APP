@@ -16,7 +16,7 @@ export default [
               "color": "#000000"
           },
           {
-              "lightness": 13
+              "lightness": 23
           }
       ]
   },
@@ -37,7 +37,7 @@ export default [
               "color": "#144b53"
           },
           {
-              "lightness": 14
+              "lightness": 24
           },
           {
               "weight": 1.4
@@ -61,7 +61,7 @@ export default [
               "color": "#0c4152"
           },
           {
-              "lightness": 5
+              "lightness": 15
           },
           {
               "visibility": "on"
@@ -160,7 +160,7 @@ export default [
               "color": "#0b3d51"
           },
           {
-              "lightness": 16
+              "lightness": 29
           }
       ]
   },
@@ -174,11 +174,23 @@ export default [
       ]
   },
   {
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [
+        {
+            "visibility": "off"
+        }
+    ]
+  },
+  {
       "featureType": "transit.line",
       "elementType": "geometry.fill",
       "stylers": [
           {
               "color": "#c1ab00"
+          },
+          {
+            "visibility": "off"
           }
       ]
   },
@@ -186,9 +198,9 @@ export default [
       "featureType": "transit.station.rail",
       "elementType": "labels.text.fill",
       "stylers": [
-          {
-              "visibility": "on"
-          },
+        {
+          "visibility": "off"
+        },
           {
               "color": "#ffe300"
           }
@@ -208,7 +220,7 @@ export default [
       "elementType": "labels.icon",
       "stylers": [
           {
-              "visibility": "on"
+              "visibility": "off"
           }
       ]
   },
