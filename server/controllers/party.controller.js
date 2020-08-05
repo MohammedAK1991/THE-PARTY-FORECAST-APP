@@ -13,9 +13,9 @@ exports.getAllParties = async (req,res) => {
 
 exports.addParty = async (req,res) => {
 
-  const {artists,venue,genre, date, lat, lng, iconURL, instagram} = req.body;
+  const {artists,venue,genre, date, lat, lng, iconURL, instagram,userId, partyImage} = req.body;
 
-  Party.create ({artists,venue, date, genre,lat, lng, iconURL, instagram},
+  Party.create ({artists,venue, date, genre,lat, lng, iconURL, instagram, userId, partyImage},
     (error,newParty) => {
       if (error) {
         console.log(error);

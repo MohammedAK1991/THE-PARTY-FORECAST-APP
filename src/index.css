@@ -43,7 +43,8 @@ code {
     background-color: red;
 }
 
-h1 {
+
+/* h1 {
     position: absolute;
     top: 0.8rem;
     left: 1rem;
@@ -52,33 +53,75 @@ h1 {
     margin: 0;
     padding: 0;
     font-family: "Rubik Mono One", sans-serif;
-}
+} */
 
 #ui_search {
     background-color: black;
     /* position: absolute */
-    width: 28vw;
+    width: 38vw;
+    height: 6vh;
+    padding-left: 0.5vw;
+    margin-top: 6px;
+    /* top: 2%; */
+}
+
+#ui_search_find {
+    background-color: black;
+    /* position: absolute; */
+    width: 38vw;
+    height: 6vh;
     padding-left: 0.5vw;
 }
 
-#search_icon {
-    color: white;
-    z-index: 100;
+#MAIN_LOGO {
     position: absolute;
-    top: 1rem;
-    left: 92%;
+    top: 50%;
+    left: 50%;
 }
 
-.search {
+.search_host {
     position: absolute;
-    top: 0.9rem;
-    left: 50%;
+    top: 3.4%;
+    left: 40%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 450px;
     z-index: 10;
     border: none;
     outline: none;
+    height: 10rem;
+}
+
+.search_host input {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: lightgray;
+    font-size: 20pt;
+    border-radius: 1%;
+}
+
+#search_icon {
+    color: white;
+    z-index: 100;
+    position: absolute;
+    top: 0.26rem;
+    left: 95%;
+}
+
+.search {
+    position: absolute;
+    top: 17%;
+    left: 40%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 450px;
+    z-index: 10;
+    border: none;
+    outline: none;
+    height: 10rem;
     /* background: yellow; */
 }
 
@@ -95,45 +138,57 @@ h1 {
 
 .locate {
     position: absolute;
-    top: 1.55rem;
+    top: 0.8vh;
     left: 63%;
     background: none;
     border: none;
     z-index: 10;
 }
 
-.locate img {
-    width: 50px;
-    cursor: pointer;
-}
-
-.logo {
+.locate_host {
     position: absolute;
-    display: none;
-    top: -3.5rem;
-    left: 22%;
+    top: 2.8vh;
+    left: 63%;
     background: none;
     border: none;
     z-index: 10;
 }
 
-.widget2 {
+.locate_host img {
+    width: 50px;
+    cursor: pointer;
+    z-index: 300;
+}
+
+.locate img {
+    width: 50px;
+    cursor: pointer;
+    z-index: 300;
+}
+
+#partyList:hover {
+    cursor: pointer;
+}
+
+
+/* .widget2 {
     position: absolute;
     height: 100vh;
     width: 10vw;
     background-color: white;
     z-index: 20;
     left: -8.5rem;
-}
+} */
 
 
 /* .widget2:hover+.widget {
     display: block;
 } */
 
-.widget2:hover {
+
+/* .widget2:hover {
     left: 0;
-}
+} */
 
 .widget {
     margin: 1px;
@@ -162,6 +217,13 @@ h1 {
 .form {
     display: flex;
     flex-direction: column;
+    margin-left: 8px;
+    padding: 10px;
+}
+
+.form>* {
+    margin: 1px 0px;
+    padding: 10px;
 }
 
 
@@ -174,7 +236,7 @@ h1 {
     z-index: 40;
     position: absolute;
     /* Position them relative to the browser window */
-    left: -80px;
+    left: -98px;
     /* Position them outside of the screen */
     transition: 0.3s;
     /* Add transition on hover */
@@ -192,6 +254,10 @@ h1 {
     /* Rounded corners on the top right and bottom right side */
 }
 
+#mySidenav:first-child {
+    width: 1500px;
+}
+
 #mySidenav a:hover {
     left: 0;
     /* On mouse-over, make the elements appear as they should */
@@ -200,27 +266,110 @@ h1 {
 
 /* The about link: 20px from the top with a green background */
 
-#about {
-    top: 12%;
-    background-color: #4ea8de;
+#logo {
+    top: 0%;
+    background-color: rgb(49, 100, 112);
+    text-align: center;
+    left: 0;
+    z-index: 0;
+    /* height: 500px; */
+    width: 1000px;
+    /* Light Black */
 }
 
-#blog {
+#login {
+    top: 15%;
+    background-color: rgb(0, 160, 232);
+    text-align: center;
+    display: flex;
+}
+
+#host {
     top: 30%;
-    background-color: #5390d9;
+    background-color: rgb(67, 217, 202);
+    text-align: center;
     /* Blue */
+    display: flex;
 }
 
-#projects {
-    top: 42%;
-    background-color: #5e60ce;
+#find {
+    top: 50%;
+    background-color: rgb(42, 194, 82);
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    font-family: "Avenir";
+    padding: 20px;
     /* Red */
 }
 
-#contact {
-    top: 50%;
-    background-color: #6930c3;
-    /* Light Black */
+#MainPartyList {
+    position: absolute;
+    flex-direction: row;
+    text-align: center;
+    max-width: 15vw;
+    top: 66%;
+    color: white;
+    background-color: rgb(33, 89, 72);
+    /* copied */
+    z-index: 40;
+    position: absolute;
+    /* Position them relative to the browser window */
+    left: -13.8%;
+    /* Position them outside of the screen */
+    transition: 0.3s;
+    /* Add transition on hover */
+    padding: 15px;
+    /* 15px padding */
+    width: 14vw;
+    height: 31vh;
+    overflow-y: scroll;
+    /* overflow-x: visible; */
+    /* Set a specific width */
+    text-decoration: none;
+    /* Remove underline */
+    font-size: 20px;
+    font-family: "Avenir";
+    /* Increase font size */
+    color: black;
+    /* White text color */
+    border-radius: 0 5px 5px 0;
+    display: flex;
+}
+
+.overflow {
+    position: absolute;
+    z-index: 10;
+    top: 90px;
+    left: -3.35%;
+    margin-top: 630px;
+}
+
+#overflow:hover {
+    /* left: 0; */
+    /* display: none; */
+    cursor: pointer;
+}
+
+#MainPartyList:hover {
+    left: 0;
+    /* On mouse-over, make the elements appear as they should */
+}
+
+#MainPartyList {
+    /* display: flex; */
+}
+
+#options {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 2%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 2000;
 }
 
 
@@ -230,24 +379,24 @@ h1 {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 2.29rem;
+    top: 1.8vh;
     left: 68%;
     background: none;
     border: none;
     z-index: 10;
-    width: 10vw;
+    width: 8vw;
 }
 
 .filter select {
-    width: 170px;
+    width: 150px;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 2px 2px 8px #999;
+    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
-    display: inline-block;
+    /* display: inline-block; */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -258,6 +407,8 @@ h1 {
     position: relative;
 }
 
+
+/*
 .filter label:after {
     content: "<>";
     font: 12px "Consolas", monospace;
@@ -272,6 +423,7 @@ h1 {
     position: absolute;
     pointer-events: none;
 }
+*/
 
 
 /* .filter label:before {
@@ -293,8 +445,8 @@ h1 {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 2.29rem;
-    left: 80.5%;
+    top: 1.8vh;
+    left: 79.1%;
     background: none;
     border: none;
     z-index: 10;
@@ -302,11 +454,11 @@ h1 {
 }
 
 .filterDate select {
-    width: 130px;
+    width: 137px;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 2px 2px 8px #999;
+    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
@@ -321,7 +473,8 @@ h1 {
     position: relative;
 }
 
-.filterDate label:after {
+
+/* .filterDate label:after {
     content: "<>";
     font: 11px "Consolas", monospace;
     color: white;
@@ -335,7 +488,7 @@ h1 {
     border-bottom: 1px solid #ddd;
     position: absolute;
     pointer-events: none;
-}
+} */
 
 
 /* .filterDate label:before {
@@ -354,8 +507,8 @@ h1 {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 2.29rem;
-    left: 89.9%;
+    top: 1.8vh;
+    left: 89.5%;
     background: none;
     border: none;
     z-index: 10;
@@ -367,7 +520,7 @@ h1 {
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 2px 2px 8px #999;
+    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
@@ -382,7 +535,8 @@ h1 {
     position: relative;
 }
 
-.filterTheme label:after {
+
+/* .filterTheme label:after {
     content: "<>";
     font: 11px "Consolas", monospace;
     color: white;
@@ -396,7 +550,7 @@ h1 {
     border-bottom: 1px solid #ddd;
     position: absolute;
     pointer-events: none;
-}
+} */
 
 
 /* making markers bounce */
@@ -449,3 +603,8 @@ h1 {
 .button_list {
     display: flex;
 }
+
+
+/* #party_details {
+    padding-left: 100px;
+} */

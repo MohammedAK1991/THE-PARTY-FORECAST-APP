@@ -40,6 +40,14 @@ const partySchema = new Schema({
   score: {
     type: Number , default: 0, required: false
   },
+  userId: {
+    type:Number,
+    default: 0
+  },
+  partyImage:{
+    type:String,
+    required:false
+  }
 });
 
 const Party = mongoose.model('Party',partySchema);

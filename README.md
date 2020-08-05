@@ -1,11 +1,9 @@
-# Google Maps in React Demo
+# WELCOME TO THE PARTY FORECAST APP
 
-This video covers a **Bear Sighting** React App where we learn how Google Maps, Google Places, and browser geolocation works. All using modern React (hooks) and up to date packages for 2020.
+Find & Host Parties around you on an interactive google maps interface. Filter by Genre, date, change themes and search for locations all over the world
 
 ## Links
 
-- Source Code: https://github.com/leighhalliday/google-maps-react-2020
-- Video: https://youtu.be/WZcxJGmLbSo
 - Google Maps React: https://www.npmjs.com/package/@react-google-maps/api
 - Google Places React: https://www.npmjs.com/package/use-places-autocomplete
 - Reach Combobox: https://reacttraining.com/reach-ui/combobox/

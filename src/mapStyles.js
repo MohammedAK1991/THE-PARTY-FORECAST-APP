@@ -21,6 +21,24 @@ export default [
       ]
   },
   {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+        {
+            "color": "#d0e3b4"
+        }
+    ]
+},
+{
+  "featureType": "poi.medical",
+  "elementType": "geometry",
+  "stylers": [
+      {
+          "color": "#fbd3da"
+      }
+  ]
+},
+  {
       "featureType": "administrative",
       "elementType": "geometry.fill",
       "stylers": [
@@ -232,5 +250,14 @@ export default [
               "color": "#021019"
           }
       ]
-  }
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels",
+    "stylers": [
+        {
+            "visibility": "off"
+        }
+    ]
+},
 ]
