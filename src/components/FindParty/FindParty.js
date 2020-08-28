@@ -63,7 +63,6 @@ export default function FindParty() {
     zoomControl: true,
   };
 
-  //initial api call to load data
   useEffect(() => {
     const getDataAxios = async () => {
       const { data: parties } = await axios.get('http://localhost:3001/parties');
@@ -71,7 +70,7 @@ export default function FindParty() {
       setAllParties(filteredParties);
       setParties(filteredParties);
     }
-    getDataAxios(); //calling the above created function
+    getDataAxios();
   }, []);
 
   React.useEffect(() => {
@@ -139,9 +138,7 @@ export default function FindParty() {
         return;
       default:
         return;
-
     }
-
   }
 
   const handleGoing = async (selected) => {
@@ -233,7 +230,6 @@ export default function FindParty() {
         <div className="filterDate">
           <select
             name="date"
-            // value={state.genre}
             onChange={handleDateChange}
             style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
@@ -247,7 +243,6 @@ export default function FindParty() {
         <div className="filterTheme">
           <select
             name="theme"
-            // value={state.genre}
             onChange={handleThemeChange}
             style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
@@ -307,8 +302,6 @@ export default function FindParty() {
             }}
             label={{
               color: 'orange', fontWeight: 'bold', fontSize: '14px', text: 'You are here!', fontFamily: 'Avenir'
-              // origin: new window.google.maps.Point(110, 110),
-              // anchor: new window.google.maps.Point(30, 55),
             }}
             labelAnchor={new window.google.maps.Point(200, 0)}
           />
@@ -323,14 +316,8 @@ export default function FindParty() {
               setSelected(null);
             }}
           >
-
             <div className="ui card" id="party_details" style={{ paddingLeft: '8px', width: 'auto' }}>
               <div class="image">
-                {/* <img
-                // src={ selected.iconURL || '/dj.svg'}
-                src={ selected.partyImage||  selected.iconURL}
-                // src={ 'http://res.cloudinary.com/partyforecast/image/upload/v1596556305/dev_setups/qcpd66japnjdcuysis8j.jpg'}
-                alt="party" /> */}
                 <Image
                   key={selected._id}
                   // cloudName={process.env.REACT_APP_CLOUDINARY_NAME}
@@ -442,8 +429,6 @@ function Search({ panTo }) {
     },
   });
 
-  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
-
   const handleInput = (e) => {
     setValue(e.target.value);
   };
@@ -464,10 +449,9 @@ function Search({ panTo }) {
   return (
     <div className="search">
       <Combobox onSelect={handleSelect} className="ui icon input"
-      // key={Math.random()*1000}
       >
         <ComboboxInput
-          // key={Math.random()*1000}
+          key={Math.random() * 1000}
           value={value}
           onChange={handleInput}
           disabled={!ready}
@@ -478,10 +462,10 @@ function Search({ panTo }) {
         />
         <i aria-hidden="false" className="search icon large" id="search_icon"></i>
         <ComboboxPopover
-        // key={Math.random()*1000}
+          key={Math.random() * 1000}
         >
           <ComboboxList
-          // key={Math.random()*1000}
+            key={Math.random() * 1000}
           >
             {status === "OK" &&
               data.map(({ id, description }) => (
