@@ -52,7 +52,7 @@ export default function AppRouter() {
               >
               </img>
             </Link>
-            : <Link id="host" style={{ textDecoration: 'none', color: 'black' }} to="/host">
+            : <Link id="host" style={{ textDecoration: 'none', color: 'black' }} >
               <div className="hosting" style={{ color: 'black' }}>
                 SIGN IN TO HOST
             </div>
@@ -62,7 +62,6 @@ export default function AppRouter() {
               </img>
             </Link>
           }
-
           <Link id="find" style={{ textDecoration: 'none', color: 'black' }} to="/">
             <div className="finding" style={{ color: 'black' }}>
               FIND PARTIES

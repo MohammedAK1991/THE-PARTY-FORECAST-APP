@@ -113,7 +113,6 @@ export default function HostAParty({ userId }) {
   if (!isLoaded) return "Loading...";
 
   const onMapClick = (e) => {
-    console.log(e.latLng.lat());
     panTo({
       lat: e.latLng.lat(),
       lng: e.latLng.lng(),
