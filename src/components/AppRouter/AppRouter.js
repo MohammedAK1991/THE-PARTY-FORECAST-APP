@@ -27,8 +27,8 @@ export default function AppRouter() {
 
 
   return (
-      <Router>
 
+      <Router>
       <div>
 
         <div id="mySidenav" className="sidenav" style={{color:'black'}} >
@@ -75,7 +75,7 @@ export default function AppRouter() {
               FIND PARTIES
             </div>
 
-            <img src='/search (1).svg' alt='kundi'
+            <img src='/search (1).svg' alt='search icon'
               style={{fontFamily:'Avenir',color:'black',backgroundColor:'transparent', height:'50px', width:'50px', marginLeft:'10px'}}
               >
             </img>

@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Image, Transformation } from 'cloudinary-react';
 
@@ -53,8 +53,8 @@ export default function FindParty() {
   const [selected, setSelected] = React.useState(null);
   const [allParties, setAllParties] = React.useState([]);
   const [parties, setParties] = React.useState([]);
-  const [partyList,setPartyList] = React.useState([]);
-  const [theme,setTheme] = React.useState(mapStyles);
+  const [partyList, setPartyList] = React.useState([]);
+  const [theme, setTheme] = React.useState(mapStyles);
 
 
   const options = {
@@ -64,20 +64,20 @@ export default function FindParty() {
   };
 
   //initial api call to load data
-  useEffect(()=> {
+  useEffect(() => {
     const getDataAxios = async () => {
-      const {data:parties} = await axios.get('http://localhost:3001/parties');
+      const { data: parties } = await axios.get('http://localhost:3001/parties');
       const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
       setAllParties(filteredParties);
       setParties(filteredParties);
     }
     getDataAxios(); //calling the above created function
-  },[]);
+  }, []);
 
   React.useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
-          setSelected(null);
+        setSelected(null);
       }
     };
     window.addEventListener("keydown", listener);
@@ -85,17 +85,16 @@ export default function FindParty() {
       window.removeEventListener("keydown", listener);
     };
   },
-  []);
+    []);
 
   const handleChange = (e) => {
     const currentParties = [...allParties]
     const { value } = e.target;
-    if (value ==='ALL') {
+    if (value === 'ALL') {
       setParties(allParties);
       return;
     }
     const filteredParties = currentParties.filter(party => party.genre === value)
-    console.log(filteredParties);
     setParties(filteredParties);
   };
 
@@ -103,16 +102,16 @@ export default function FindParty() {
     const currentParties = [...allParties]
     const { value } = e.target;
 
-    if (value ==='THIS WEEK') {
+    if (value === 'THIS WEEK') {
       setParties(allParties);
       return;
     }
-    if (value ==='TODAY') {
+    if (value === 'TODAY') {
       const filteredParties = currentParties.filter(party => Date.parse(party.date) < (Date.now() + 7.2e+7))
       setParties(filteredParties);
       return;
     }
-    if (value ==='TOMORROW') {
+    if (value === 'TOMORROW') {
       const filteredParties = currentParties.filter(party => Date.parse(party.date) < (Date.now() + 1.44e+8) && Date.parse(party.date) > (Date.now() + 7.2e+7))
       setParties(filteredParties);
       return;
@@ -122,7 +121,7 @@ export default function FindParty() {
   const handleThemeChange = (e) => {
     const { value } = e.target;
 
-    switch(value) {
+    switch (value) {
       case 'VINTAGE':
         setTheme(mapStyles2);
         return;
@@ -135,7 +134,7 @@ export default function FindParty() {
       case 'APPLE':
         setTheme(mapStyles4);
         return;
-        case 'AVOCADO':
+      case 'AVOCADO':
         setTheme(avocadoTheme);
         return;
       default:
@@ -148,16 +147,14 @@ export default function FindParty() {
   const handleGoing = async (selected) => {
 
     await axios.post(`http://localhost:3001/parties/${selected._id}/going`)
-    console.log('voted');
 
     const currentPartyList = [...partyList];
-    if (currentPartyList.find(party => party._id === selected._id )) {
-      console.log('returning')
+    if (currentPartyList.find(party => party._id === selected._id)) {
       return;
     }
     currentPartyList.push(selected);
     const sortedParties = currentPartyList.sort((a, b) => {
-      if(a.date > b.date) return 1;
+      if (a.date > b.date) return 1;
       return -1;
     });
     await setPartyList(sortedParties);
@@ -168,13 +165,11 @@ export default function FindParty() {
 
   const handleMaybe = async () => {
     await axios.post(`http://localhost:3001/parties/${selected._id}/maybe`)
-    console.log('maybe');
   }
 
   const handleNotGoing = async () => {
 
     await axios.post(`http://localhost:3001/parties/${selected._id}/not`)
-    console.log('not');
   }
 
 
@@ -189,15 +184,14 @@ export default function FindParty() {
 
   }, []);
 
-  const handlePanTo = async ({lat,lng}) => {
+  const handlePanTo = async ({ lat, lng }) => {
     setTimeout(() => {
       mapRef.current.panTo({ lat, lng });
+    }, 500)
 
-    },500)
     setTimeout(() => {
-
       mapRef.current.setZoom(18.5);
-    },700)
+    }, 700)
   }
 
   const panTo = React.useCallback(({ lat, lng }) => {
@@ -215,19 +209,16 @@ export default function FindParty() {
         <Search panTo={panTo} />
 
         <div className="filter">
-          <label htmlFor="genre" style={{color:'yellow'}}>
+          <label htmlFor="genre" style={{ color: 'yellow' }}>
             <select
               placeholder="Select Genre"
               name="genre"
-              // value={selected.genre}
-              // defaultValue={'TECHNO'}
               onChange={handleChange}
-              // className="ui button floating labeled dropdown icon"
-              style={{fontFamily:'Avenir',color:'white',backgroundColor:'black'}}
+              style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
 
 
             >
-              <i aria-hidden="true" className="filter icon" style={{zindex:111}}></i>
+              <i aria-hidden="true" className="filter icon" style={{ zindex: 111 }}></i>
               <option value="NO" disabled selected>Filter by Genre ↡ </option>
               <option value="EDM">EDM</option>
               <option value="TECHNO">TECHNO</option>
@@ -241,16 +232,16 @@ export default function FindParty() {
 
         <div className="filterDate">
           <select
-                name="date"
-                // value={state.genre}
-                onChange={handleDateChange}
-                style={{fontFamily:'Avenir',color:'white',backgroundColor:'black'}}
-              >
-                <option value="" disabled selected>Filter by Date ↡ </option>
-                <option value="TODAY">TODAY</option>
-                <option value="TOMORROW">TOMORROW</option>
-                <option value="THIS WEEK">THIS WEEK</option>
-            </select>
+            name="date"
+            // value={state.genre}
+            onChange={handleDateChange}
+            style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
+          >
+            <option value="" disabled selected>Filter by Date ↡ </option>
+            <option value="TODAY">TODAY</option>
+            <option value="TOMORROW">TOMORROW</option>
+            <option value="THIS WEEK">THIS WEEK</option>
+          </select>
         </div>
 
         <div className="filterTheme">
@@ -258,7 +249,7 @@ export default function FindParty() {
             name="theme"
             // value={state.genre}
             onChange={handleThemeChange}
-            style={{fontFamily:'Avenir',color:'white',backgroundColor:'black'}}
+            style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
             <option value="" disabled selected>Change Theme ↡ </option>
             <option value="VINTAGE">VINTAGE</option>
@@ -285,17 +276,17 @@ export default function FindParty() {
           <Marker
             className="bounce"
             zIndex={10}
-            animation = {window.google.maps.Animation.BOUNCE}
-            key={`${party.lat}-${party.lng}`+ Math.random()*100}
+            animation={window.google.maps.Animation.BOUNCE}
+            key={`${party.lat}-${party.lng}` + Math.random() * 100}
             position={{ lat: party.lat, lng: party.lng }}
             onClick={() => {
               setSelected(party);
             }}
             icon={{
-              url : party.iconURL || '/bass-guitar.png',
+              url: party.iconURL || '/bass-guitar.png',
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(party.score + 35 ||35 , party.score + 35 ||35),
+              scaledSize: new window.google.maps.Size(party.score + 35 || 35, party.score + 35 || 35),
             }}
           />
         ))}
@@ -304,24 +295,24 @@ export default function FindParty() {
           <Marker
             className="bounce"
             zIndex={10}
-            animation = {window.google.maps.Animation.BOUNCE}
-            key={Math.random()*1000}
-            position={{ lat: 41.3851, lng: 2.1734}}
+            animation={window.google.maps.Animation.BOUNCE}
+            key={Math.random() * 1000}
+            position={{ lat: 41.3851, lng: 2.1734 }}
             icon={{
               url: `/cartman-1.png`,
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(30, 55),
               scaledSize: new window.google.maps.Size(60, 50),
-              labelOrigin: new window.google.maps.Point(26,55)
+              labelOrigin: new window.google.maps.Point(26, 55)
             }}
             label={{
-              color: 'orange', fontWeight: 'bold', fontSize: '14px', text: 'You are here!',fontFamily: 'Avenir'
+              color: 'orange', fontWeight: 'bold', fontSize: '14px', text: 'You are here!', fontFamily: 'Avenir'
               // origin: new window.google.maps.Point(110, 110),
               // anchor: new window.google.maps.Point(30, 55),
             }}
             labelAnchor={new window.google.maps.Point(200, 0)}
           />
-        ) :null
+        ) : null
 
         }
 
@@ -333,9 +324,9 @@ export default function FindParty() {
             }}
           >
 
-            <div className="ui card" id="party_details" style={{paddingLeft:'8px', width:'auto'}}>
-            <div class="image">
-              {/* <img
+            <div className="ui card" id="party_details" style={{ paddingLeft: '8px', width: 'auto' }}>
+              <div class="image">
+                {/* <img
                 // src={ selected.iconURL || '/dj.svg'}
                 src={ selected.partyImage||  selected.iconURL}
                 // src={ 'http://res.cloudinary.com/partyforecast/image/upload/v1596556305/dev_setups/qcpd66japnjdcuysis8j.jpg'}
@@ -352,41 +343,44 @@ export default function FindParty() {
                   <Transformation width="10" height="10" crop="crop" />
                 </Image>
 
-            </div>
+              </div>
               <div className="content" >
-                <div className="header" style={{margin: '5px', fontSize:'2rem'}}>
-                  {' '+ selected.artists}
+                <div className="header" style={{ margin: '5px', fontSize: '2rem' }}>
+                  {' ' + selected.artists}
                 </div>
-                <div className="header" style={{margin: '5px', color:'blue', letterSpacing:2.5}}>
+                <div className="header" style={{ margin: '5px', color: 'blue', letterSpacing: 2.5 }}>
                   {selected.genre}
                 </div>
-                <div className="description" style={{margin: '5px',}}>
+                <div className="description" style={{ margin: '5px', }}>
                   <i class="map marker alternate icon orange"></i> {selected.venue}
                 </div>
-                <div className="description" style={{margin: '5px',marginRight:'5px'}}>
+                <div className="description" style={{ margin: '5px', marginRight: '5px' }}>
                   <i class="calendar alternate outline icon red"></i>
                   {moment(selected.date).format('MMMM Do, h:mm a')}
                 </div>
-                <a className="ui text blue"  href={`https://www.instagram.com/mohmedak_/`}>
+                <a className="ui text blue" href={`https://www.instagram.com/mohmedak_/`}>
                   <i class="instagram icon large"
-                    style={{paddingLeft:'4px', paddingRight:'0px'}}
+                    style={{ paddingLeft: '4px', paddingRight: '0px' }}
                   >
-                  </i> Instagram
+                  </i>
+                  Instagram
                 </a>
-                <div className="button_list" style={{margin: '5px',marginTop:'10px'}}>
+                <div className="button_list" style={{ margin: '5px', marginTop: '10px' }}>
                   <button onClick={() => handleGoing(selected)}
-                    style={{ paddingRight:'10px'}}
+                    style={{ paddingRight: '10px' }}
                     className="ui animated button green">
-                      <div class="visible content"
-                        style={{ paddingRight:'12px'}}
-                      >GOING  </div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div></button>
+                    <div class="visible content"
+                      style={{ paddingRight: '12px' }}
+                    > GOING  </div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div>
+                  </button>
                   <button onClick={handleMaybe}
-                    style={{ paddingRight:'12px'}}
+                    style={{ paddingRight: '12px' }}
                     className="ui animated button orange">
-                      <div class="visible content"
-                        style={{ paddingRight:'12px'}}
-                      >MAYBE {''}{''}
-                      </div><div class="hidden content"><i aria-hidden="true" class="question circle icon"></i></div></button>
+                    <div class="visible content"
+                      style={{ paddingRight: '12px' }}
+                    >MAYBE {''}{''}
+                    </div><div class="hidden content"><i aria-hidden="true" class="question circle icon"></i></div>
+                  </button>
                   <button onClick={handleNotGoing} className="ui animated button red"><div class="visible content">NOPE</div><div class="hidden content"><i aria-hidden="true" class="thumbs down icon"></i></div></button>
                 </div>
               </div>
@@ -402,7 +396,7 @@ export default function FindParty() {
       <div className="PartyList">
         {partyList ? (
           <PartyList partyList={partyList} {...panTo} handlePanTo={handlePanTo} />
-        ): <h1>No parties in list </h1> }
+        ) : <h1>No parties in list </h1>}
 
       </div>
 
@@ -470,7 +464,7 @@ function Search({ panTo }) {
   return (
     <div className="search">
       <Combobox onSelect={handleSelect} className="ui icon input"
-        // key={Math.random()*1000}
+      // key={Math.random()*1000}
       >
         <ComboboxInput
           // key={Math.random()*1000}
@@ -480,18 +474,18 @@ function Search({ panTo }) {
           placeholder="Search for location or click on compass"
           className="ui_search"
           id="ui_search"
-          style={{fontFamily:'Avenir', color:'white'}}
+          style={{ fontFamily: 'Avenir', color: 'white' }}
         />
         <i aria-hidden="false" className="search icon large" id="search_icon"></i>
         <ComboboxPopover
-          // key={Math.random()*1000}
+        // key={Math.random()*1000}
         >
           <ComboboxList
-            // key={Math.random()*1000}
+          // key={Math.random()*1000}
           >
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id + Math.random()*1000 } value={description} style={{fontFamily:'Avenir', color:'white', backgroundColor:'black'}} />
+                <ComboboxOption key={id + Math.random() * 1000} value={description} style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }} />
               ))}
           </ComboboxList>
         </ComboboxPopover>

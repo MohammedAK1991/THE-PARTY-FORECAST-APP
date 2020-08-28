@@ -77,7 +77,7 @@ export default function HostAParty({userId}) {
   const getDataAxios = async () => {
     const {data:parties} = await axios.get('http://localhost:3001/parties');
 
-    const filteredParties = parties.filter(party => (Date.parse(party.date) > Date.now()) && (party.userId == userId))
+    const filteredParties = parties.filter(party => (Date.parse(party.date) > Date.now()) && (party.userId === userId))
     await setPartyList(filteredParties);
   }
   getDataAxios(); //calling the above created function
@@ -175,7 +175,6 @@ export default function HostAParty({userId}) {
   }
 
   let party;
-  let daImageURL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -245,8 +244,6 @@ export default function HostAParty({userId}) {
 
 
           })
-
-
         // setSuccessMsg('Image uploaded successfully');
     } catch (err) {
         console.error(err);

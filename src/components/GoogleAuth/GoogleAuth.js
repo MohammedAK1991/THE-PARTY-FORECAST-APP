@@ -4,9 +4,9 @@ import React from 'react';
 class GoogleAuth extends React.Component {
 
   state = {
-    isSignedIn: null,
-    userId:null,
-    userName:null
+    isSignedIn : null,
+    userId : null,
+    userName : null
   };
 
   componentDidMount() {
@@ -48,19 +48,19 @@ class GoogleAuth extends React.Component {
     if (this.state.isSignedIn == null ) {
       return null;
     } else if (this.state.isSignedIn) {
-      return (
-          <button onClick={this.onSignOutClick} className="ui red google button ">
+        return (
+            <button onClick={this.onSignOutClick} className="ui red google button ">
 
-            Sign Out
-        </button>
-      )
-    } else {
-      return (
-          <button onClick={this.onSignInClick} className="ui blue google button ">
-
-            Sign In
+              Sign Out
           </button>
-      )
+        )
+    } else {
+        return (
+            <button onClick={this.onSignInClick} className="ui blue google button ">
+
+              Sign In
+            </button>
+        )
     }
   }
 
@@ -70,7 +70,7 @@ class GoogleAuth extends React.Component {
     this.setState({
       isSignedIn:this.auth.isSignedIn.get(),
       userId:this.auth.currentUser.get().getId(),
-      // userName:this.auth.currentUser.get().Ot.Cd
+      userName:this.auth.currentUser.get().Ot.Cd || ''
     })
 
     this.props.handleSignIn(this.auth.currentUser.get().getId());
