@@ -434,10 +434,8 @@ function Search({ panTo }) {
 
   return (
     <div className="search">
-      <Combobox onSelect={handleSelect} className="ui icon input"
-      >
+      <Combobox onSelect={handleSelect} className="ui icon input">
         <ComboboxInput
-          key={Math.random() * 1000}
           value={value}
           onChange={handleInput}
           disabled={!ready}
@@ -447,12 +445,8 @@ function Search({ panTo }) {
           style={{ fontFamily: 'Avenir', color: 'white' }}
         />
         <i aria-hidden="false" className="search icon large" id="search_icon"></i>
-        <ComboboxPopover
-          key={Math.random() * 1000}
-        >
-          <ComboboxList
-            key={Math.random() * 1000}
-          >
+        <ComboboxPopover>
+          <ComboboxList>
             {status === "OK" &&
               data.map(({ id, description }) => (
                 <ComboboxOption key={id + Math.random() * 1000} value={description} style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }} />

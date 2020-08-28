@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import axios from 'axios';
 import '../../index.css';
 import {
@@ -41,7 +41,7 @@ const center = {
 };
 
 
-export default function HostAParty({userId}) {
+export default function HostAParty({ userId }) {
 
 
   const { isLoaded, loadError } = useLoadScript({
@@ -50,7 +50,7 @@ export default function HostAParty({userId}) {
   });
 
   const [parties, setParties] = React.useState([]);
-  const [partyList,setPartyList] = React.useState([]);
+  const [partyList, setPartyList] = React.useState([]);
 
   const initialState = {
     artists: null,
@@ -64,7 +64,7 @@ export default function HostAParty({userId}) {
 
   const [state, setState] = React.useState(initialState);
   const [selected, setSelected] = React.useState(null);
-  const [submitted,setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
   const [fileInputState, setFileInputState] = useState('');
   const [previewSource, setPreviewSource] = useState('');
   const [selectedFile, setSelectedFile] = useState();
@@ -73,20 +73,20 @@ export default function HostAParty({userId}) {
 
 
 
-  React.useEffect(()=> {
-  const getDataAxios = async () => {
-    const {data:parties} = await axios.get('http://localhost:3001/parties');
+  React.useEffect(() => {
+    const getDataAxios = async () => {
+      const { data: parties } = await axios.get('http://localhost:3001/parties');
 
-    const filteredParties = parties.filter(party => (Date.parse(party.date) > Date.now()) && (party.userId === userId))
-    await setPartyList(filteredParties);
-  }
-  getDataAxios(); //calling the above created function
-},[userId]);
+      const filteredParties = parties.filter(party => (Date.parse(party.date) > Date.now()) && (party.userId === userId))
+      await setPartyList(filteredParties);
+    }
+    getDataAxios(); //calling the above created function
+  }, [userId]);
 
   React.useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
-          setSelected(null);
+        setSelected(null);
       }
     };
     window.addEventListener("keydown", listener);
@@ -94,7 +94,7 @@ export default function HostAParty({userId}) {
       window.removeEventListener("keydown", listener);
     };
   },
-  []);
+    []);
   //CLOUDINARY
 
   const handleFileInputChange = (e) => {
@@ -123,7 +123,7 @@ export default function HostAParty({userId}) {
     setTimeout(() => {
       mapRef.current.panTo({ lat, lng });
       mapRef.current.setZoom(17);
-    },1000)
+    }, 1000)
   }, []);
 
   if (loadError) return "Error";
@@ -145,7 +145,7 @@ export default function HostAParty({userId}) {
     ]);
   };
 
-//for the form
+  //for the form
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -156,7 +156,7 @@ export default function HostAParty({userId}) {
   };
 
   const generateIconURL = (genre) => {
-    switch(genre) {
+    switch (genre) {
       case 'JAZZ':
         return '/jazz.svg';
       case 'EDM':
@@ -179,75 +179,75 @@ export default function HostAParty({userId}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     //code for cloudinary handlesubmit
+    //code for cloudinary handlesubmit
     if (!previewFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
-        uploadImage(reader.result);
+      uploadImage(reader.result);
     };
     reader.onerror = () => {
-        console.error('AHHHHHHHH!!');
+      console.error('AHHHHHHHH!!');
 
     };
 
   };
 
-  async function uploadImage (base64EncodedImage) {
+  async function uploadImage(base64EncodedImage) {
     try {
-        fetch('http://localhost:3001/api/upload', {
-            method: 'POST',
-            body: JSON.stringify({ data: base64EncodedImage }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-          .then(res => res.json())
-          .then( async imageURL => {
+      fetch('http://localhost:3001/api/upload', {
+        method: 'POST',
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(res => res.json())
+        .then(async imageURL => {
 
-            setFileInputState('');
-            const { date, venue, artists, genre, instagram } = state;
-            const latitude = selected.lat;
-            const longitude = selected.lng;
-            const iconURL = generateIconURL(genre);
-            party = { date, venue, artists, genre, latitude, longitude,iconURL,instagram,userId, imageURL }
-            console.log('submitted', party)
+          setFileInputState('');
+          const { date, venue, artists, genre, instagram } = state;
+          const latitude = selected.lat;
+          const longitude = selected.lng;
+          const iconURL = generateIconURL(genre);
+          party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, userId, imageURL }
+          console.log('submitted', party)
 
-            await axios.post('http://localhost:3001/parties/', {
-              artists: artists,
-              venue: venue,
-              date: date,
-              genre: genre,
-              lat: latitude,
-              lng: longitude,
-              iconURL : iconURL,
-              instagram : instagram,
-              userId : Number(userId),
-              partyImage : imageURL
-              })
-              //party created message
-            setSubmitted(true);
-
-            //adding to partyList
-            const currentPartyList = [...partyList];
-
-            currentPartyList.push(party);
-            // await setPartyList(currentPartyList);
-            // await setPartyList([...partyList, party]);
-            const sortedParties = currentPartyList.sort((a, b) => {
-              if(a.date > b.date) return 1;
-              return -1;
-            });
-            await setPartyList(sortedParties);
-
-            setState(initialState);
-            setSelected(null);
-
-
-
+          await axios.post('http://localhost:3001/parties/', {
+            artists: artists,
+            venue: venue,
+            date: date,
+            genre: genre,
+            lat: latitude,
+            lng: longitude,
+            iconURL: iconURL,
+            instagram: instagram,
+            userId: Number(userId),
+            partyImage: imageURL
           })
-        // setSuccessMsg('Image uploaded successfully');
+          //party created message
+          setSubmitted(true);
+
+          //adding to partyList
+          const currentPartyList = [...partyList];
+
+          currentPartyList.push(party);
+          // await setPartyList(currentPartyList);
+          // await setPartyList([...partyList, party]);
+          const sortedParties = currentPartyList.sort((a, b) => {
+            if (a.date > b.date) return 1;
+            return -1;
+          });
+          await setPartyList(sortedParties);
+
+          setState(initialState);
+          setSelected(null);
+
+
+
+        })
+      // setSuccessMsg('Image uploaded successfully');
     } catch (err) {
-        console.error(err);
-        // setErrMsg('Something went wrong!');
+      console.error(err);
+      // setErrMsg('Something went wrong!');
     }
   };
 
@@ -281,8 +281,8 @@ export default function HostAParty({userId}) {
             draggable={true}
             zIndex={10}
             ref={markerRef}
-            animation = {window.google.maps.Animation.BOUNCE}
-            key={`${party.lat}-${party.lng}`+ Math.random()*100}
+            animation={window.google.maps.Animation.BOUNCE}
+            key={`${party.lat}-${party.lng}` + Math.random() * 100}
             position={{ lat: party.lat, lng: party.lng }}
             onClick={() => {
               markerRef.current.animation = window.google.maps.Animation.BOUNCE;
@@ -296,7 +296,7 @@ export default function HostAParty({userId}) {
               scaledSize: new window.google.maps.Size(60, 50),
             }}
           />
-        )):<h1>Loading</h1>}
+        )) : <h1>Loading</h1>}
 
         {selected ? (
           <InfoWindow
@@ -306,91 +306,91 @@ export default function HostAParty({userId}) {
               setPreviewSource('');
             }}
           >
-              <form className="ui form " onSubmit={handleSubmit}>
-                <label  htmlFor="venue">VENUE</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Add venue"
-                  name="venue"
-                  value={state.venue}
-                  onChange={handleChange}
-                />
+            <form className="ui form " onSubmit={handleSubmit}>
+              <label htmlFor="venue">VENUE</label>
+              <input
+                type="text"
+                required
+                placeholder="Add venue"
+                name="venue"
+                value={state.venue}
+                onChange={handleChange}
+              />
 
-                <label  htmlFor="genre">SELECT GENRE</label>
-                <select
-                  placeholder="Select Genre"
-                  required
-                  name="genre"
-                  value={state.genre}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled selected>Select Genre</option>
-                  <option value="EDM">EDM</option>
-                  <option value="TECHNO">TECHNO</option>
-                  <option value="ROCK">ROCK</option>
-                  <option value="JAZZ">JAZZ</option>
-                  <option value="LATINO">LATINO</option>
-                  <option value="PSY">JAZZ</option>
-                </select>
-                <label  htmlFor="artists">ARTISTS</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Artists performing.."
-                  name="artists"
-                  value={state.artists}
-                  onChange={handleChange}
-                />
+              <label htmlFor="genre">SELECT GENRE</label>
+              <select
+                placeholder="Select Genre"
+                required
+                name="genre"
+                value={state.genre}
+                onChange={handleChange}
+              >
+                <option value="" disabled selected>Select Genre</option>
+                <option value="EDM">EDM</option>
+                <option value="TECHNO">TECHNO</option>
+                <option value="ROCK">ROCK</option>
+                <option value="JAZZ">JAZZ</option>
+                <option value="LATINO">LATINO</option>
+                <option value="PSY">JAZZ</option>
+              </select>
+              <label htmlFor="artists">ARTISTS</label>
+              <input
+                type="text"
+                required
+                placeholder="Artists performing.."
+                name="artists"
+                value={state.artists}
+                onChange={handleChange}
+              />
 
-                <label  htmlFor="date">DATE & TIME</label>
-                <input
-                  type="datetime-local"
-                  required
-                  name="date"
-                  value={state.date}
-                  onChange={handleChange}
-                  placeholder="05/12/2019, 12:09"
-                />
-                <label  htmlFor="instagram">Link to Instagram account</label>
-                <input
-                  type="string"
-                  required={false}
-                  name="instagram"
-                  value={state.instagram}
-                  onChange={handleChange}
-                  placeholder="Add link here.."
-                />
-                <label  htmlFor="partyImage">Select Image to upload</label>
-                <input
-                    id="fileInput"
-                    type="file"
-                    name="image"
-                    onChange={handleFileInputChange}
-                    value={fileInputState}
-                    className="form-input"
-                    placeholder="UpLoad Image"
-                />
-                <br/>
-                <button className="ui animated button primary" type="submit" disabled={validateForm()}>
+              <label htmlFor="date">DATE & TIME</label>
+              <input
+                type="datetime-local"
+                required
+                name="date"
+                value={state.date}
+                onChange={handleChange}
+                placeholder="05/12/2019, 12:09"
+              />
+              <label htmlFor="instagram">Link to Instagram account</label>
+              <input
+                type="string"
+                required={false}
+                name="instagram"
+                value={state.instagram}
+                onChange={handleChange}
+                placeholder="Add link here.."
+              />
+              <label htmlFor="partyImage">Select Image to upload</label>
+              <input
+                id="fileInput"
+                type="file"
+                name="image"
+                onChange={handleFileInputChange}
+                value={fileInputState}
+                className="form-input"
+                placeholder="UpLoad Image"
+              />
+              <br />
+              <button className="ui animated button primary" type="submit" disabled={validateForm()}>
 
                 <div class="visible content">SUBMIT</div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div>
-                </button>
-              </form>
+              </button>
+            </form>
           </InfoWindow>
         ) : null}
 
         {submitted && previewSource ? (
           <InfoWindow
             position={{ lat: parties[parties.length - 1].lat, lng: parties[parties.length - 1].lng }}
-            style={{width:'auto',height:'auto'}}
+            style={{ width: 'auto', height: 'auto' }}
             onCloseClick={() => {
               setSelected(null);
               setSubmitted(null);
             }}
           >
-            <div style={{display:'flex',width:'auto',height:'auto'}}>
-              <h1 style={{position:'absolute', top:120, left:110}}>
+            <div style={{ display: 'flex', width: 'auto', height: 'auto' }}>
+              <h1 style={{ position: 'absolute', top: 120, left: 110 }}>
                 Party Registered!!
               </h1>
               {/* <img src={ party.iconURL || '/dj.svg' } alt="icon"/> */}
@@ -409,37 +409,34 @@ export default function HostAParty({userId}) {
           <Marker
             className="bounce"
             zIndex={10}
-            animation = {window.google.maps.Animation.BOUNCE}
-            key={Math.random()*100}
-            position={{ lat: 41.3851, lng: 2.1734}}
+            animation={window.google.maps.Animation.BOUNCE}
+            key={Math.random() * 100}
+            position={{ lat: 41.3851, lng: 2.1734 }}
             icon={{
               url: `/kyle-2.png`,
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(30, 55),
               scaledSize: new window.google.maps.Size(60, 50),
-              labelOrigin: new window.google.maps.Point(26,57)
+              labelOrigin: new window.google.maps.Point(26, 57)
             }}
             label={{
-              color: 'crimson', fontWeight: 'bolder', fontSize: '16px', text: 'You are here !',fontFamily: 'Avenir'
+              color: 'crimson', fontWeight: 'bolder', fontSize: '16px', text: 'You are here !', fontFamily: 'Avenir'
               // origin: new window.google.maps.Point(110, 110),
               // anchor: new window.google.maps.Point(30, 55),
             }}
             labelAnchor={new window.google.maps.Point(200, 0)}
           />
-        ) :null
+        ) : null
         }
-
       </GoogleMap>
 
       <div className="PartyList">
         {partyList ? (
           <PartyList partyList={partyList} />
-        ): <h1 style={{zindex:1000}}>
-          No parties in list
-        </h1> }
-
+        ) : <h1 style={{ zindex: 1000 }}>
+            No parties in list
+        </h1>}
       </div>
-
     </div>
   );
 }
@@ -479,8 +476,6 @@ function Search({ panTo }) {
     },
   });
 
-  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
-
   const handleInput = (e) => {
     setValue(e.target.value);
   };
@@ -508,14 +503,14 @@ function Search({ panTo }) {
           placeholder="Search for location or click on compass"
           className="ui_search"
           id="ui_search_find"
-          style={{fontFamily:'Avenir', color:'white'}}
+          style={{ fontFamily: 'Avenir', color: 'white' }}
         />
         <i aria-hidden="false" className="search icon large" id="search_icon"></i>
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id + Math.random()*1000 } value={description} style={{fontFamily:'Avenir', color:'white', backgroundColor:'black'}} />
+                <ComboboxOption key={id + Math.random() * 1000} value={description} style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }} />
               ))}
           </ComboboxList>
         </ComboboxPopover>
