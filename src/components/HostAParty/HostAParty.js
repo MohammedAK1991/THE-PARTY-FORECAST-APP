@@ -158,8 +158,6 @@ export default function HostAParty({ userId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    //code for cloudinary handlesubmit
     if (!previewFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
@@ -168,9 +166,7 @@ export default function HostAParty({ userId }) {
     };
     reader.onerror = () => {
       console.error('AHHHHHHHH!!');
-
     };
-
   };
 
   async function uploadImage(base64EncodedImage) {
@@ -227,10 +223,13 @@ export default function HostAParty({ userId }) {
 
   return (
     <div>
-      <div className="options">
-        <Locate panTo={panTo} />
-        <Search panTo={panTo} />
+      <div className="options" style={{ position: 'absolute', top: '1%', left: '25%' }}>
+        <Search panTo={panTo}
+        />
       </div>
+      <Locate
+        panTo={panTo}
+      />
 
       <GoogleMap
         id="map"
