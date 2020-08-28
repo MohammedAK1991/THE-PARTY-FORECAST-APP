@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Image, Transformation } from 'cloudinary-react';
+import Locate from '../Locate/Locate';
 
 import moment from "moment";
 import '../../index.css'
@@ -361,12 +362,8 @@ export default function FindParty() {
               </div>
             </div>
           </InfoWindow>
-
-
         ) : null}
-
       </GoogleMap>
-
 
       <div className="PartyList">
         {partyList ? (
@@ -379,27 +376,27 @@ export default function FindParty() {
   );
 }
 
-function Locate({ panTo }) {
-  return (
-    <button
-      className="locate"
-      onClick={(e) => {
-        e.preventDefault()
-        window.navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null
-        );
-      }}
-    >
-      <img src="/compass.svg" alt="compass" />
-    </button>
-  );
-}
+// function Locate({ panTo }) {
+//   return (
+//     <button
+//       className="locate"
+//       onClick={(e) => {
+//         e.preventDefault()
+//         window.navigator.geolocation.getCurrentPosition(
+//           (position) => {
+//             panTo({
+//               lat: position.coords.latitude,
+//               lng: position.coords.longitude,
+//             });
+//           },
+//           () => null
+//         );
+//       }}
+//     >
+//       <img src="/compass.svg" alt="compass" />
+//     </button>
+//   );
+// }
 
 function Search({ panTo }) {
   const {
