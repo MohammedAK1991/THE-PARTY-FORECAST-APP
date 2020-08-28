@@ -12,18 +12,6 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox";
-
 
 import "@reach/combobox/styles.css";
 import mapStyles from "../../mapStyles.js";
@@ -121,7 +109,6 @@ export default function FindParty() {
 
   const handleThemeChange = (e) => {
     const { value } = e.target;
-
     switch (value) {
       case 'VINTAGE':
         setTheme(mapStyles2);
