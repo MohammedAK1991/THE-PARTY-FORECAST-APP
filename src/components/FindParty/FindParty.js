@@ -142,9 +142,7 @@ export default function FindParty() {
   }
 
   const handleGoing = async (selected) => {
-
     await axios.post(`http://localhost:3001/parties/${selected._id}/going`)
-
     const currentPartyList = [...partyList];
     if (currentPartyList.find(party => party._id === selected._id)) {
       return;
@@ -155,30 +153,23 @@ export default function FindParty() {
       return -1;
     });
     await setPartyList(sortedParties);
-
-
   }
-
 
   const handleMaybe = async () => {
     await axios.post(`http://localhost:3001/parties/${selected._id}/maybe`)
   }
 
   const handleNotGoing = async () => {
-
     await axios.post(`http://localhost:3001/parties/${selected._id}/not`)
   }
-
 
   const onMapClick = (e) => {
     setSelected(null);
   };
 
-
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
-
   }, []);
 
   const handlePanTo = async ({ lat, lng }) => {
@@ -212,8 +203,6 @@ export default function FindParty() {
               name="genre"
               onChange={handleChange}
               style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
-
-
             >
               <i aria-hidden="true" className="filter icon" style={{ zindex: 111 }}></i>
               <option value="NO" disabled selected>Filter by Genre ↡ </option>
@@ -306,7 +295,6 @@ export default function FindParty() {
             labelAnchor={new window.google.maps.Point(200, 0)}
           />
         ) : null
-
         }
 
         {selected ? (
@@ -390,8 +378,6 @@ export default function FindParty() {
     </div>
   );
 }
-
-
 
 function Locate({ panTo }) {
   return (
