@@ -13,11 +13,11 @@ No more endless searching on Facebook Events, dodgy websites, PART FORECAST is a
 <p>
 Create a Party for free with the basic details such as venue, genre of music, name of the artists performing, link to social media and also upload images of the event for potential party-goers
 </p>
-<img src="./public/Host.png"  width=500px />
+<img src="./public/Host.png"  width=700px />
 <p>
 Search any location on the interactive google maps interface, find out more details by clicking on the marker and vote if you're going to the party or not. The most popular parties have the biggest icons making it easy for the user to decide.
 </p>
-<img src="./public/FInd.png"  width=500px />
+<img src="./public/FInd.png"  width=700px />
 
 ## Project Presentation
 
@@ -26,7 +26,7 @@ The App was built by me within the space of a week.
 Click on the link below to see the presentation:
 
 <p align="center">
-<a href="https://www.youtube.com/watch?v=V-lVwIJZkn8"><img src="./public/PARTYFORECAST.png" width=400px alt="PartyForecast Video Thumbnail"/></a>
+<a href="https://www.youtube.com/watch?v=V-lVwIJZkn8"><img src="./public/PARTYFORECAST.png" width=600px alt="PartyForecast Video Thumbnail"/></a>
 </p>
 
 ## Getting Started
