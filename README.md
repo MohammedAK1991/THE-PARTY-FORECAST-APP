@@ -38,22 +38,22 @@ Click on the link below to see the presentation:
 
 <dl>
   <dt>2) Install dependencies</dt>
-  <dd>npm install</dd>
+  <dd> npm install</dd>
 
 <dl>
   <dt>3) Run MongoDB locally</dt>
-  <dd>brew services start mongodb-community(for MAC + mongoDB-community)</dd>
-  <dd>sudo service mongodb start(for WINDOWS)</dd>
+  <dd> brew services start mongodb-community(for MAC + mongoDB-community)</dd>
+  <dd> sudo service mongodb start(for WINDOWS)</dd>
 
 <dl>
-  <dt>3) Start Server</dt>
-  <dd>cd server</dd>
-  <dd>node server.js</dd>
+  <dt>4) Start Server</dt>
+  <dd> cd server</dd>
+  <dd> node server.js</dd>
 
 <dl>
-  <dt>4) Start the APP</dt>
-  <dd>cd client</dd>
-  <dd>npm start</dd>
+  <dt>5) Start the APP</dt>
+  <dd> cd client</dd>
+  <dd> npm start</dd>
 
 
 ## API Keys
