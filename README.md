@@ -56,6 +56,17 @@ Click on the link below to see the presentation:
   <dd>npm start</dd>
 
 
+## API Keys
+
+For this demo to work, please create a Google Map API Key (you will need to enable billing) and ensure that the two services below are enabled... otherwise it won't work!
+- Maps JavaScript API
+- Places API
+- Geocoding API
+ This API key must be in a .env.local file `REACT_APP_GOOGLE_PLACES_API_KEY`.
+Furthermore you will also need to get an API key from  [Cloudinary](https://cloudinary.com/?utm_source=google&utm_medium=cpc&utm_campaign=Rbrand&utm_content=394051365970&utm_term=cloudinary%20api&gclid=CjwKCAjwnK36BRBVEiwAsMT8WAz9WKB1C4n0cmtnGLSslSEoWPs446ZHCnFywmUBc1_QPjvhjmoduBoCa1IQAvD_BwE)
+Please check the .env.local.example file to see what the .env file will look like
+
+
 ## Tech-Stack
 
 ![https://reactjs.org](https://img.shields.io/badge/react-%5E16.3.1-%2361DAFB?style=flat-square&logo=react)
@@ -89,13 +100,5 @@ Click on the link below to see the presentation:
 - [Browser Geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 
 
-## API Keys
-
-For this demo to work, please create a Google Map API Key (you will need to enable billing) and ensure that the two services below are enabled... otherwise it won't work! This API key must be in a .env.local file `REACT_APP_GOOGLE_PLACES_API_KEY`.
-Please check the .env.local.example file to see exactly what you need to do
-
-- Maps JavaScript API
-- Places API
-- Geocoding API
 
 
