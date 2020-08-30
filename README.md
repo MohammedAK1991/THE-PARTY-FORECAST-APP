@@ -16,7 +16,7 @@ Create a Party for free with the basic details such as venue, genre of music, na
 
 </p>
 <p>
-<img src="./public/FInd.png"  width=300px align="right"/>
+<img src="./public/FInd.png"  width=300px align="left"/>
 Search any location on the interactive google maps interface, find out more details by clicking on the marker and vote if you're going to the party or not. The most popular parties have the biggest icons making it easy for the user to decide.
 
 </p>
