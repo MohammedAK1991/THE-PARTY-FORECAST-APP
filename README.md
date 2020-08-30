@@ -51,7 +51,7 @@ Click on the link below to see the presentation:
   <dd>node server.js</dd>
 
 <dl>
-  <dt>3) Start the APP</dt>
+  <dt>4) Start the APP</dt>
   <dd>cd client</dd>
   <dd>npm start</dd>
 
