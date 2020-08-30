@@ -40,6 +40,22 @@ Click on the link below to see the presentation:
   <dt>2) Install dependencies</dt>
   <dd>npm install</dd>
 
+<dl>
+  <dt>3) Run MongoDB locally</dt>
+  <dd>brew services start mongodb-community(for MAC + mongoDB-community)</dd>
+  <dd>sudo service mongodb start(for WINDOWS)</dd>
+
+<dl>
+  <dt>3) Start Server</dt>
+  <dd>cd server</dd>
+  <dd>node server.js</dd>
+
+<dl>
+  <dt>3) Start React Server</dt>
+  <dd>cd client</dd>
+  <dd>npm start</dd>
+
+
 ## Tech-Stack
 
 ![https://reactjs.org](https://img.shields.io/badge/react-%5E16.3.1-%2361DAFB?style=flat-square&logo=react)
