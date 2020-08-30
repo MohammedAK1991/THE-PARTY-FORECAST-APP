@@ -21,7 +21,6 @@ exports.addParty = async (req, res) => {
         res.sendStatus(500);
       }
       else {
-        console.log('Party created', newParty);
         res.json(newParty);
         res.status(200);
       }
