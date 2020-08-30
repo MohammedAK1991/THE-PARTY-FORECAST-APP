@@ -7,7 +7,6 @@ import GoogleAuth from '../GoogleAuth/GoogleAuth.js'
 import '../../index.css'
 
 export default function AppRouter() {
-
   const [isSignedIn, setIsSignedIn] = React.useState(null);
   const [userId, setUserId] = React.useState(null);
 
@@ -85,7 +84,5 @@ export default function AppRouter() {
 
       </div>
     </Router>
-
-
   );
 }
