@@ -5,7 +5,7 @@ Filter by Genre, date, change themes and search for locations all over the world
 Find out where the biggest party is happening in a genre of your choice, on a day you prefer.
 No more endless searching on Facebook Events, dodgy websites, PART FORECAST is all you will ever need.
 
-![](./public/PARTYFORECAST.png)
+![](./public/Thumbnail.png)
 
 
 ## Features
@@ -16,7 +16,7 @@ Create a Party for free with the basic details such as venue, genre of music, na
 
 </p>
 <p>
-<img src="./public/Find.png"  width=300px align="right"/>
+<img src="./public/FInd.png"  width=300px align="right"/>
 Search any location on the interactive google maps interface, find out more details by clicking on the marker and vote if you're going to the party or not. The most popular parties have the biggest icons making it easy for the user to decide.
 
 </p>
@@ -28,7 +28,7 @@ The App was built by me within the space of a week.
 Click on the link below to see the presentation:
 
 <p align="center">
-<a href="https://www.youtube.com/watch?v=V-lVwIJZkn8"><img src="./public/Thumbnail.png" alt="PartyForecast Video Thumbnail"/></a>
+<a href="https://www.youtube.com/watch?v=V-lVwIJZkn8"><img src="./public/PARTYFORECAST.png" alt="PartyForecast Video Thumbnail"/></a>
 </p>
 
 ## Getting Started
