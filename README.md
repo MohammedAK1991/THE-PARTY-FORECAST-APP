@@ -31,30 +31,46 @@ Click on the thumbnail below to see the presentation:
 
 ## Getting Started
 
-<dl>
-  <dt>1) Clone the repo</dt>
-  <dd>git clone https://github.com/MohammedAK1991/PARTY-FORECAST.git</dd>
-  <dd>cd client</dd>
+1. Clone the repo and open in your code editor of choice
 
-<dl>
-  <dt>2) Install dependencies</dt>
-  <dd> npm install</dd>
+```
+git clone https://github.com/MohammedAK1991/PARTY-FORECAST.git
+```
 
-<dl>
-  <dt>3) Run MongoDB locally</dt>
-  <dd> brew services start mongodb-community(for MAC + mongoDB-community)</dd>
-  <dd> sudo service mongodb start(for WINDOWS)</dd>
+2. Install dependencies
 
-<dl>
-  <dt>4) Start Server</dt>
-  <dd> cd server</dd>
-  <dd> node server.js</dd>
+```
+cd client
+npm install
+cd server
+npm install
+```
+3. Run MongoDB locally
 
-<dl>
-  <dt>5) Start the APP</dt>
-  <dd> cd client</dd>
-  <dd> npm start</dd>
+```
+brew services start mongodb- (for MAC + mongoDB-community)
+sudo service mongodb start(for WINDOWS)
+```
+4. Start Server
 
+```
+cd server
+node server.js
+```
+
+
+5. In the root, create a .env file with the following variables:
+```
+REACT_APP_GOOGLE_MAPS_API_KEY= <your api key goes here>
+REACT_APP_CLOUDINARY_NAME=<your cloudinary collection name goes here>
+```
+
+6. Start the application on localhost
+
+```
+cd client
+npm start
+```
 
 ## API Keys
 
