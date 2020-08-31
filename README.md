@@ -115,6 +115,21 @@ Please check the .env.local.example file to see what the .env file will look lik
 - [Cloudinary for image upload](https://cloudinary.com/?utm_source=google&utm_medium=cpc&utm_campaign=Rbrand&utm_content=394051365970&utm_term=cloudinary%20api&gclid=CjwKCAjwnK36BRBVEiwAsMT8WAz9WKB1C4n0cmtnGLSslSEoWPs446ZHCnFywmUBc1_QPjvhjmoduBoCa1IQAvD_BwE)
 - [Browser Geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 
+## Observations
+
+### Room For Improvement
+* Extensive testing (>70% Coverage) with Jest and Jasmine
+* Add functionality to get directions to a location within the map
+* Improve handling of edge cases for better efficiency
+* Fix minor CSS glitches
+* Complete responsiveness on mobile platforms
+
+## Contributing
+
+Improvements are welcome 🙂
+
+Fork the repo and do your thing. Push to your fork and submit a pull request.
+
 
 
 
