@@ -26,7 +26,7 @@ The App was built by me within the space of a week.
 Click on the thumbnail below to see the presentation:
 
 <p align="center">
-<a href="https://www.youtube.com/watch?v=V-lVwIJZkn8"><img src="./public/PARTYFORECAST.png" width=550px alt="PartyForecast Video Thumbnail"/></a>
+<a href="https://www.youtube.com/watch?v=V-lVwIJZkn8"><img src="./public/Thumbnail.png" width=550px alt="PartyForecast Video Thumbnail"/></a>
 </p>
 
 ## Getting Started
@@ -48,7 +48,7 @@ npm install
 3. Run MongoDB locally
 
 ```
-brew services start mongodb- (for MAC + mongoDB-community)
+brew services start mongodb-community (for MAC + mongoDB-community)
 sudo service mongodb start(for WINDOWS)
 ```
 4. Start Server
