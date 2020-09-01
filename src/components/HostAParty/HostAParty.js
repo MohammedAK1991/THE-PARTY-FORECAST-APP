@@ -11,7 +11,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
-import mapStyles2 from "../../mapStyles2.js";
+import mapStyles2 from "../../MapThemes/mapStyles2.js";
 import PartyList from '../PartyList/PartyList.js';
 
 const libraries = ["places"];
@@ -166,8 +166,7 @@ export default function HostAParty({ userId }) {
     reader.onerror = () => {
       console.error('AHHHHHHHH!!');
     };
-  };
-
+  }//api service
   async function uploadImage(base64EncodedImage) {
     try {
       fetch('http://localhost:3001/api/upload', {

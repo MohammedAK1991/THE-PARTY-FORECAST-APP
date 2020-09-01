@@ -14,11 +14,11 @@ import {
 } from "@react-google-maps/api";
 
 import "@reach/combobox/styles.css";
-import mapStyles from "../../mapStyles.js";
-import mapStyles2 from "../../mapStyles2.js";
-import mapStyles3 from "../../mapStyles3.js";
-import mapStyles4 from "../../mapStyles4.js";
-import avocadoTheme from "../../avocadoTheme"
+import mapStyles from "../../MapThemes/mapStyles.js";
+import mapStyles2 from "../../MapThemes/mapStyles2.js";
+import mapStyles3 from "../../MapThemes/mapStyles3.js";
+import mapStyles4 from "../../MapThemes/mapStyles4.js";
+import avocadoTheme from "../../MapThemes/avocadoTheme"
 import PartyList from '../PartyList/PartyList.js';
 
 
