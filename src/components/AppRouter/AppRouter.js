@@ -24,7 +24,7 @@ export default function AppRouter() {
     <Router>
       <div>
         <div id="mySidenav" className="sidenav" style={{ color: 'black' }} >
-          <a href="/" id="logo" style={{ color: 'orange', zindex: '0', fontWeight: 'bolder', fontFamily: 'monospace', fontSize: '50px', paddingRight: '10px', width: '249px', left: 0, paddingBottom: '20px' }}> //eslint-disable-line
+          <a href="/" id="logo" style={{ color: 'orange', zindex: '0', fontWeight: 'bolder', fontFamily: 'monospace', fontSize: '50px', paddingRight: '10px', width: '249px', left: 0, paddingBottom: '20px' }}>
             PARTY FRCST
           </a>
 
