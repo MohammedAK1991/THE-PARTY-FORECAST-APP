@@ -44,7 +44,7 @@ export default function FindParty() {
   const [allParties, setAllParties] = React.useState([]);
   const [parties, setParties] = React.useState([]);
   const [partyList, setPartyList] = React.useState([]);
-  const [theme, setTheme] = React.useState(mapStyles);
+  const [theme, setTheme] = React.useState(mapStyles2);
 
 
   const options = {

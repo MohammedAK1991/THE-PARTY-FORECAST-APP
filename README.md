@@ -40,7 +40,7 @@ git clone https://github.com/MohammedAK1991/PARTY-FORECAST.git
 2. Install dependencies
 
 ```
-cd client
+cd src
 npm install
 cd server
 npm install
