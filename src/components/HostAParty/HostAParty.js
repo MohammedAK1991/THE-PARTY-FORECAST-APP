@@ -68,7 +68,7 @@ export default function HostAParty({ userId }) {
     getDataAxios();
   }, [userId]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
         setSelected(null);
