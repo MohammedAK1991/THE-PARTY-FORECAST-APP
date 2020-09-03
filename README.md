@@ -51,24 +51,23 @@ npm install
 brew services start mongodb-community (for MAC + mongoDB-community)
 sudo service mongodb start(for WINDOWS)
 ```
-4. Start Server
 
-```
-cd server
-node server.js
-```
-
-
-5. In the root, create a .env file with the following variables:
+4. In the root, create a .env.local file with the following variables:
 ```
 REACT_APP_GOOGLE_MAPS_API_KEY= <your api key goes here>
-REACT_APP_CLOUDINARY_NAME=<your cloudinary collection name goes here>
+REACT_APP_CLOUDINARY_NAME= <your cloudinary collection name goes here>
+```
+
+5. In the server folder, create a .env file with the following variables:
+```
+CLOUDINARY_API_KEY= <your api key goes here
+CLOUDINARY_API_SECRET= <your cloudinary secret code goes here>
+CLOUDINARY_NAME= <your cloudinary collection name goes here>
 ```
 
 6. Start the application on localhost
 
 ```
-cd client
 npm start
 ```
 
@@ -79,8 +78,8 @@ For this demo to work, please create a Google Map API Key (you will need to enab
 - Places API
 - Geocoding API
  This API key must be in a .env.local file `REACT_APP_GOOGLE_PLACES_API_KEY`.
-Furthermore you will also need to get an API key from  [Cloudinary](https://cloudinary.com/?utm_source=google&utm_medium=cpc&utm_campaign=Rbrand&utm_content=394051365970&utm_term=cloudinary%20api&gclid=CjwKCAjwnK36BRBVEiwAsMT8WAz9WKB1C4n0cmtnGLSslSEoWPs446ZHCnFywmUBc1_QPjvhjmoduBoCa1IQAvD_BwE)
-Please check the .env.local.example file to see what the .env file will look like
+Furthermore you will also need to get an API key (along with secret code and collection name) from  [Cloudinary](https://cloudinary.com/?utm_source=google&utm_medium=cpc&utm_campaign=Rbrand&utm_content=394051365970&utm_term=cloudinary%20api&gclid=CjwKCAjwnK36BRBVEiwAsMT8WAz9WKB1C4n0cmtnGLSslSEoWPs446ZHCnFywmUBc1_QPjvhjmoduBoCa1IQAvD_BwE)
+Please check the .env.local.example file in the src folder and .env.example file in the server folder to see what it should look like
 
 
 ## Tech-Stack

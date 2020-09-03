@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from 'axios';
 import '../../index.css';
 import Locate from '../Locate/Locate';
@@ -10,9 +10,8 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-
-import mapStyles2 from "../../MapThemes/mapStyles2.js";
 import PartyList from '../PartyList/PartyList.js';
+import mapStyles2 from "../../MapThemes/mapStyles2.js";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -56,8 +55,6 @@ export default function HostAParty({ userId }) {
   const [previewSource, setPreviewSource] = useState('');
   const [selectedFile, setSelectedFile] = useState();
 
-  const markerRef = React.useRef(null);
-
   useEffect(() => {
     const getDataAxios = async () => {
       const { data: parties } = await axios.get('http://localhost:3001/parties');
@@ -97,12 +94,12 @@ export default function HostAParty({ userId }) {
     };
   };
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = useCallback(({ lat, lng }) => {
     setTimeout(() => {
       mapRef.current.panTo({ lat, lng });
       mapRef.current.setZoom(17);
@@ -240,15 +237,12 @@ export default function HostAParty({ userId }) {
           <Marker
             draggable={true}
             zIndex={10}
-            ref={markerRef}
             animation={window.google.maps.Animation.BOUNCE}
             key={`${party.lat}-${party.lng}` + Math.random() * 100}
             position={{ lat: party.lat, lng: party.lng }}
             onClick={() => {
-              markerRef.current.animation = window.google.maps.Animation.BOUNCE;
               setSelected(party);
             }}
-
             icon={{
               url: `/google-maps.svg`,
               origin: new window.google.maps.Point(0, 0),
@@ -331,7 +325,7 @@ export default function HostAParty({ userId }) {
                 className="form-input"
                 placeholder="UpLoad Image"
               />
-              <br />
+              <br/>
               <button className="ui animated button primary" type="submit" disabled={validateForm()}>
 
                 <div class="visible content">SUBMIT</div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div>
@@ -361,6 +355,7 @@ export default function HostAParty({ userId }) {
             </div>
           </InfoWindow>
         ) : null}
+
         <Marker
           className="bounce"
           zIndex={10}
@@ -379,6 +374,7 @@ export default function HostAParty({ userId }) {
           }}
           labelAnchor={new window.google.maps.Point(200, 0)}
         />
+
       </GoogleMap>
 
       <div className="PartyList">
