@@ -68,7 +68,8 @@ CLOUDINARY_NAME= <your cloudinary collection name goes here>
 6. Start the application on localhost
 
 ```
-npm start
+cd src
+npm run start:client
 ```
 
 ## API Keys
