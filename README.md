@@ -80,6 +80,7 @@ For this demo to work, please create a Google Map API Key (you will need to enab
 - Geocoding API
  This API key must be in a .env.local file `REACT_APP_GOOGLE_PLACES_API_KEY`.
 Furthermore you will also need to get an API key (along with secret code and collection name) from  [Cloudinary](https://cloudinary.com/?utm_source=google&utm_medium=cpc&utm_campaign=Rbrand&utm_content=394051365970&utm_term=cloudinary%20api&gclid=CjwKCAjwnK36BRBVEiwAsMT8WAz9WKB1C4n0cmtnGLSslSEoWPs446ZHCnFywmUBc1_QPjvhjmoduBoCa1IQAvD_BwE)
+And finally, you will also need to apply for credentials to authorize Google OAuth2.0 and get a [clientId](https://console.developers.google.com/) from there.
 Please check the .env.local.example file in the src folder and .env.example file in the server folder to see what it should look like
 
 
