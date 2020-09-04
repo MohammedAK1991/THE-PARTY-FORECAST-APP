@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../index.css';
 import Locate from '../Locate/Locate';
 import Search from '../Search/Search';
+import { generateIconURL } from '../../ApiClient'
 
 import {
   GoogleMap,
@@ -27,6 +28,11 @@ const center = {
   lat: 41.3851,
   lng: 2.1734,
 };
+
+const serverApiUrl =
+  process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_URL_PROD
+    : process.env.REACT_APP_API_URL;
 
 export default function HostAParty({ userId }) {
 
@@ -56,16 +62,6 @@ export default function HostAParty({ userId }) {
   const [selectedFile, setSelectedFile] = useState();
 
   useEffect(() => {
-    const getDataAxios = async () => {
-      const { data: parties } = await axios.get('http://localhost:3001/parties');
-
-      const filteredParties = parties.filter(party => (Date.parse(party.date) > Date.now()) && (party.userId === userId))
-      await setPartyList(filteredParties);
-    }
-    getDataAxios();
-  }, [userId]);
-
-  useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
         setSelected(null);
@@ -78,8 +74,8 @@ export default function HostAParty({ userId }) {
   },
     []);
 
-  //CLOUDINARY
-  const handleFileInputChange = (e) => {
+  // CLOUDINARY
+  const handleColudinaryFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
     setSelectedFile(file);
@@ -110,10 +106,6 @@ export default function HostAParty({ userId }) {
   if (!isLoaded) return "Loading...";
 
   const onMapClick = (e) => {
-    panTo({
-      lat: e.latLng.lat(),
-      lng: e.latLng.lng(),
-    });
     setParties((current) => [
       {
         lat: e.latLng.lat(),
@@ -131,42 +123,24 @@ export default function HostAParty({ userId }) {
     }));
   };
 
-  const generateIconURL = (genre) => {
-    switch (genre) {
-      case 'JAZZ':
-        return '/jazz.svg';
-      case 'EDM':
-        return '/musician.svg';
-      case 'ROCK':
-        return '/rock2.svg';
-      case 'TECHNO':
-        return '/techno-music.svg';
-      case 'LATINO':
-        return '/woman.svg';
-      case 'PSY':
-        return '/trance.png';
-      default:
-        return '/latin.png';
-    }
-  }
-
-  let party;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!previewFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
-      uploadImage(reader.result);
+      uploadImageAndPost(reader.result);
     };
     reader.onerror = () => {
       console.error('AHHHHHHHH!!');
     };
   }//api service
-  async function uploadImage(base64EncodedImage) {
+
+  let party;
+
+  async function uploadImageAndPost(base64EncodedImage) {
     try {
-      fetch('http://localhost:3001/api/upload', {
+      fetch(`${serverApiUrl}/upload`, {
         method: 'POST',
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { 'Content-Type': 'application/json' },
@@ -178,10 +152,11 @@ export default function HostAParty({ userId }) {
           const latitude = selected.lat;
           const longitude = selected.lng;
           const iconURL = generateIconURL(genre);
+
           party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, userId, imageURL }
           console.log('submitted', party)
 
-          await axios.post('http://localhost:3001/parties/', {
+          await axios.post(`${serverApiUrl}/parties`, {
             artists: artists,
             venue: venue,
             date: date,
@@ -212,7 +187,7 @@ export default function HostAParty({ userId }) {
 
   const validateForm = () => {
     return (
-      !state.date || !state.venue || !state.artists || !state.genre
+      !state.date || !state.venue || !state.artists || !state.genre || !selectedFile
     );
   };
 
@@ -320,12 +295,12 @@ export default function HostAParty({ userId }) {
                 id="fileInput"
                 type="file"
                 name="image"
-                onChange={handleFileInputChange}
+                onChange={handleColudinaryFileInputChange}
                 value={fileInputState}
                 className="form-input"
                 placeholder="UpLoad Image"
               />
-              <br/>
+              <br />
               <button className="ui animated button primary" type="submit" disabled={validateForm()}>
 
                 <div class="visible content">SUBMIT</div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div>

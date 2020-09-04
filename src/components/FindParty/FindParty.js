@@ -33,6 +33,11 @@ const center = {
   lng: 2.1734,
 };
 
+const serverApiUrl =
+  process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_URL_PROD
+    : process.env.REACT_APP_API_URL;
+
 export default function FindParty() {
 
   const { isLoaded, loadError } = useLoadScript({
@@ -55,7 +60,7 @@ export default function FindParty() {
 
   useEffect(() => {
     const getDataAxios = async () => {
-      const { data: parties } = await axios.get('http://localhost:3001/parties');
+      const { data: parties } = await axios.get(`${serverApiUrl}/parties`);
       const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
       setAllParties(filteredParties);
       setParties(filteredParties);
@@ -131,7 +136,7 @@ export default function FindParty() {
   }
 
   const handleGoing = async (selected) => {
-    await axios.post(`http://localhost:3001/parties/${selected._id}/going`)
+    await axios.post(`${serverApiUrl}/parties/${selected._id}/going`)
     const currentPartyList = [...partyList];
     if (currentPartyList.find(party => party._id === selected._id)) {
       return;
@@ -145,11 +150,11 @@ export default function FindParty() {
   }
 
   const handleMaybe = async () => {
-    await axios.post(`http://localhost:3001/parties/${selected._id}/maybe`)
+    await axios.post(`${serverApiUrl}/parties/${selected._id}/maybe`)
   }
 
   const handleNotGoing = async () => {
-    await axios.post(`http://localhost:3001/parties/${selected._id}/not`)
+    await axios.post(`${serverApiUrl}parties/${selected._id}/not`)
   }
 
   const onMapClick = (e) => {

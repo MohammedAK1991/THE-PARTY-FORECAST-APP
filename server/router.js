@@ -12,7 +12,7 @@ router.post('/parties/:id/maybe', controllers.maybeGoingToParty);
 router.post('/parties/:id/not', controllers.notGoingToParty);
 
 //cloudinary
-router.post('/api/upload', async (req, res) => {
+router.post('/upload', async (req, res) => {
   try {
     const fileStr = req.body.data;
     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
