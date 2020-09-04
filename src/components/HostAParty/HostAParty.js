@@ -19,11 +19,13 @@ const mapContainerStyle = {
   height: "100vh",
   width: "100vw",
 };
+
 const options = {
   styles: mapStyles2,
   disableDefaultUI: true,
   zoomControl: true,
 };
+
 const center = {
   lat: 41.3851,
   lng: 2.1734,
@@ -34,15 +36,19 @@ const serverApiUrl =
     ? process.env.REACT_APP_API_URL_PROD
     : process.env.REACT_APP_API_URL;
 
+HostAParty.defaultProps = {
+  userId: 123456789,
+}
+
 export default function HostAParty({ userId }) {
+
+  console.log(userId);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-  const [parties, setParties] = React.useState([]);
-  const [partyList, setPartyList] = React.useState([]);
 
   const initialState = {
     artists: null,
@@ -54,12 +60,24 @@ export default function HostAParty({ userId }) {
     instagram: null
   }
 
+  const [parties, setParties] = React.useState([]);
+  const [partyList, setPartyList] = React.useState([]);
   const [state, setState] = React.useState(initialState);
   const [selected, setSelected] = React.useState(null);
   const [submitted, setSubmitted] = React.useState(false);
   const [fileInputState, setFileInputState] = useState('');
   const [previewSource, setPreviewSource] = useState('');
   const [selectedFile, setSelectedFile] = useState();
+
+  useEffect(() => {
+    const getDataAxios = async () => {
+      const { data: parties } = await axios.get(`${serverApiUrl}/parties/${userId || 1234567}`);
+      const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
+
+      setParties(filteredParties);
+    }
+    getDataAxios();
+  }, []);
 
   useEffect(() => {
     const listener = e => {
@@ -106,12 +124,12 @@ export default function HostAParty({ userId }) {
   if (!isLoaded) return "Loading...";
 
   const onMapClick = (e) => {
-    setParties((current) => [
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
+    setParties((current) => [...current,
+    {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+      time: new Date(),
+    },
     ]);
   };
 
@@ -153,7 +171,7 @@ export default function HostAParty({ userId }) {
           const longitude = selected.lng;
           const iconURL = generateIconURL(genre);
 
-          party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, userId, imageURL }
+          party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, userId, imageURL, userId }
           console.log('submitted', party)
 
           await axios.post(`${serverApiUrl}/parties`, {
@@ -166,11 +184,12 @@ export default function HostAParty({ userId }) {
             iconURL: iconURL,
             instagram: instagram,
             userId: Number(userId),
-            partyImage: imageURL
+            partyImage: imageURL,
+            userId: userId
           })
           setSubmitted(true);
-          const currentPartyList = [...partyList];
 
+          const currentPartyList = [...partyList];
           currentPartyList.push(party);
           const sortedParties = currentPartyList.sort((a, b) => {
             if (a.date > b.date) return 1;

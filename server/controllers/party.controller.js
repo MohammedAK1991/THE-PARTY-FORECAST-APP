@@ -66,5 +66,16 @@ exports.notGoingToParty = async (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 }
 
+exports.getUsersParties = async (req, res) => {
+  try {
+    const response = await Party.find({ userId: req.params.userId });
+    res.json(response);
+    res.status(200);
+  } catch (e) {
+    console.log(e);
+    res.status(500);
+  }
+}
+
 
 

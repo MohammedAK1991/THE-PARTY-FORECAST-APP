@@ -47,6 +47,10 @@ const partySchema = new Schema({
   partyImage: {
     type: String,
     required: false
+  },
+  userId: {
+    type: Number,
+    required: false
   }
 });
 
