@@ -7,6 +7,12 @@ No more endless searching on Facebook Events, dodgy websites, PART FORECAST is a
 
 ![](./public/PARTYFORECAST.png)
 
+## Live Demo
+
+You can find a prototype of this App [here](https://peaceful-atoll-09560.herokuapp.com/)
+
+The Frontend and Backend ar hosted on one [Heroku](heroku.com) Dyno, the database is served from the MongoDB Atlas Cloud.
+
 
 ## Features
 
