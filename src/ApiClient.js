@@ -1,7 +1,3 @@
-const serverApiUrl =
-  process.env.NODE_ENV === 'production'
-    ? process.env.REACT_APP_API_URL_PROD
-    : process.env.REACT_APP_API_URL;
 
 export const generateIconURL = (genre) => {
   switch (genre) {
@@ -21,18 +17,3 @@ export const generateIconURL = (genre) => {
       return '/latin.png';
   }
 }
-
-// export const handleColudinaryFileInputChange = (e) => {
-//   const file = e.target.files[0];
-//   previewFile(file);
-//   setSelectedFile(file);
-//   setFileInputState(e.target.value);
-// };
-
-// export const previewFile = (file) => {
-//   const reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   reader.onloadend = () => {
-//     setPreviewSource(reader.result);
-//   };
-// };

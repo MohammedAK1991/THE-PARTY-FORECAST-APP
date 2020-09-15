@@ -36,7 +36,7 @@ export default function AppRouter() {
                 setIsSignedIn={setIsSignedIn}
               />
             </div>
-            <img src='/icons8-google.svg' alt='kundi'
+            <img src='/icons8-google.svg' alt='google icon'
               style={{ fontFamily: 'Avenir', color: 'black', backgroundColor: 'transparent', height: '50px', width: '50px', marginLeft: '13px' }}
             >
             </img>
@@ -46,7 +46,7 @@ export default function AppRouter() {
               <div className="hosting">
                 HOST A PARTY
             </div>
-              <img src='/submit.svg' alt='kundi'
+              <img src='/submit.svg' alt='host party'
                 style={{ fontFamily: 'Avenir', color: 'black', backgroundColor: 'transparent', height: '50px', width: '50px', marginLeft: '24px', marginTop: '11px' }}
               >
               </img>
@@ -55,7 +55,7 @@ export default function AppRouter() {
               <div className="hosting" style={{ color: 'black' }}>
                 SIGN IN TO HOST
             </div>
-              <img src='/submit.svg' alt='kundi'
+              <img src='/submit.svg' alt='host party'
                 style={{ fontFamily: 'Avenir', color: 'black', backgroundColor: 'transparent', height: '50px', width: '50px', marginLeft: '24px', marginTop: '11px' }}
               >
               </img>
@@ -81,7 +81,6 @@ export default function AppRouter() {
             userId={userId}
           />
         </Route>
-
       </div>
     </Router>
   );
