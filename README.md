@@ -3,7 +3,7 @@
 Find & Host Parties around you on an interactive google maps interface.
 Filter by Genre, date, change themes and search for locations all over the world.
 Find out where the biggest party is happening in a genre of your choice, on a day you prefer.
-No more endless searching on Facebook Events, dodgy websites, PART FORECAST is all you will ever need.
+No more endless searching on Facebook Events, dodgy websites, PARTY FORECAST is all you will ever need.
 
 ![](./public/PARTYFORECAST.png)
 
