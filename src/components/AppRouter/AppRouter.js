@@ -1,12 +1,9 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../../index.css';
-
 import FindParty from '../FindParty/FindParty.js';
-
 const HostAParty = lazy(() => import('../HostAParty/HostAParty'));
 const GoogleAuth = lazy(() => import('../GoogleAuth/GoogleAuth'));
-
 
 export default function AppRouter() {
   const [isSignedIn, setIsSignedIn] = React.useState(null);

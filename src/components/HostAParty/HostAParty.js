@@ -149,7 +149,7 @@ export default function HostAParty({ userId }) {
     reader.onerror = () => {
       console.error('AHHHHHHHH!!');
     };
-  }//api service
+  }
 
   let party;
 
@@ -234,9 +234,7 @@ export default function HostAParty({ userId }) {
             animation={window.google.maps.Animation.BOUNCE}
             key={`${party.lat}-${party.lng}` + Math.random() * 100}
             position={{ lat: party.lat, lng: party.lng }}
-            onClick={() => {
-              setSelected(party);
-            }}
+            onClick={() => setSelected(party)}
             icon={{
               url: `/google-maps.svg`,
               origin: new window.google.maps.Point(0, 0),
