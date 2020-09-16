@@ -1,10 +1,12 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import FindParty from '../FindParty/FindParty.js';
-import HostAParty from '../HostAParty/HostAParty.js'
-import GoogleAuth from '../GoogleAuth/GoogleAuth.js'
+import '../../index.css';
 
-import '../../index.css'
+import FindParty from '../FindParty/FindParty.js';
+
+const HostAParty = lazy(() => import('../HostAParty/HostAParty'));
+const GoogleAuth = lazy(() => import('../GoogleAuth/GoogleAuth'));
+
 
 export default function AppRouter() {
   const [isSignedIn, setIsSignedIn] = React.useState(null);
@@ -23,18 +25,21 @@ export default function AppRouter() {
   return (
     <Router>
       <div>
-        <div id="mySidenav" className="sidenav" style={{ color: 'black' }} >
+        <div id="mySidenav" className="sidenav" style={{ color: 'black' }}>
+          {/* eslint-disable-next-line */}
           <a href="#" id="logo" style={{ color: 'orange', zindex: '0', fontWeight: 'bolder', fontFamily: 'monospace', fontSize: '50px', paddingRight: '10px', width: '249px', left: 0, paddingBottom: '20px' }}>
             PARTY FRCST
           </a>
-
+          {/* eslint-disable-next-line */}
           <a href="#" id="login" >
             <div>
-              <GoogleAuth
-                handleSignIn={handleSignIn}
-                handleSignOut={handleSignOut}
-                setIsSignedIn={setIsSignedIn}
-              />
+              <Suspense fallback={<div>Loading OAuth... </div>}>
+                <GoogleAuth
+                  handleSignIn={handleSignIn}
+                  handleSignOut={handleSignOut}
+                  setIsSignedIn={setIsSignedIn}
+                />
+              </Suspense>
             </div>
             <img src='/icons8-google.svg' alt='google icon'
               style={{ fontFamily: 'Avenir', color: 'black', backgroundColor: 'transparent', height: '50px', width: '50px', marginLeft: '13px' }}
@@ -77,9 +82,9 @@ export default function AppRouter() {
           />
         </Route>
         <Route path="/host/">
-          <HostAParty
-            userId={userId}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <HostAParty userId={userId} />
+          </Suspense>
         </Route>
       </div>
     </Router>

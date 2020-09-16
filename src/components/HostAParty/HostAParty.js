@@ -15,6 +15,7 @@ import PartyList from '../PartyList/PartyList.js';
 import mapStyles2 from "../../MapThemes/mapStyles2.js";
 
 const libraries = ["places"];
+
 const mapContainerStyle = {
   height: "100vh",
   width: "100vw",
@@ -41,8 +42,6 @@ HostAParty.defaultProps = {
 }
 
 export default function HostAParty({ userId }) {
-
-  console.log(userId);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -77,7 +76,7 @@ export default function HostAParty({ userId }) {
       setParties(filteredParties);
     }
     getDataAxios();
-  }, []);
+  }, []); //eslint-disable-line
 
   useEffect(() => {
     const listener = e => {
@@ -120,8 +119,6 @@ export default function HostAParty({ userId }) {
     }, 1000)
   }, []);
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
 
   const onMapClick = (e) => {
     setParties((current) => [...current,
@@ -171,7 +168,7 @@ export default function HostAParty({ userId }) {
           const longitude = selected.lng;
           const iconURL = generateIconURL(genre);
 
-          party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, userId, imageURL, userId }
+          party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, imageURL, userId }
           console.log('submitted', party)
 
           await axios.post(`${serverApiUrl}/parties`, {
@@ -185,7 +182,6 @@ export default function HostAParty({ userId }) {
             instagram: instagram,
             userId: Number(userId),
             partyImage: imageURL,
-            userId: userId
           })
           setSubmitted(true);
 
@@ -209,6 +205,10 @@ export default function HostAParty({ userId }) {
       !state.date || !state.venue || !state.artists || !state.genre || !selectedFile
     );
   };
+
+
+  if (loadError) return "Error";
+  if (!isLoaded) return "Loading...";
 
   return (
     <div>
@@ -321,7 +321,6 @@ export default function HostAParty({ userId }) {
               />
               <br />
               <button className="ui animated button primary" type="submit" disabled={validateForm()}>
-
                 <div class="visible content">SUBMIT</div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div>
               </button>
             </form>
@@ -338,8 +337,8 @@ export default function HostAParty({ userId }) {
             }}
           >
             <div style={{ display: 'flex', width: 'auto', height: 'auto' }}>
-              <h1 style={{ position: 'absolute', top: 120, left: 110 }}>
-                Party Registered!!
+              <h1 style={{ position: 'absolute', color: 'yellow', top: 130, left: 110 }}>
+                Your Party has been Registered!!
               </h1>
               <img
                 src={previewSource}

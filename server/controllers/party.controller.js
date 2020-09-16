@@ -1,4 +1,5 @@
 const Party = require('../models/party.model.js');
+const { cloudinary } = require('../utils/cloudinary');
 
 exports.getAllParties = async (req, res) => {
   try {
@@ -74,6 +75,22 @@ exports.getUsersParties = async (req, res) => {
   } catch (e) {
     console.log(e);
     res.status(500);
+  }
+}
+
+exports.uploadToCloudinary = async (req, res) => {
+  try {
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: 'dev_setups',
+    });
+    console.log(uploadResponse.public_id);
+    res.json(
+      uploadResponse.url,
+    );
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: 'Something went wrong' });
   }
 }
 
