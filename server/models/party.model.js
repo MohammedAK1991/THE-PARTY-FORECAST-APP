@@ -1,5 +1,4 @@
 const mongoose = require('./index.js');
-
 const Schema = mongoose.Schema;
 
 const partySchema = new Schema({
@@ -29,7 +28,8 @@ const partySchema = new Schema({
     type: String,
   },
   score: {
-    type: Number, default: 0, required: false
+    type: Number,
+    default: 0
   },
   userId: {
     type: Number,

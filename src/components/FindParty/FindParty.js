@@ -16,9 +16,7 @@ import {
 import "@reach/combobox/styles.css";
 import mapStyles from "../../MapThemes/mapStyles.js";
 import mapStyles2 from "../../MapThemes/mapStyles2.js";
-import mapStyles3 from "../../MapThemes/mapStyles3.js";
 import mapStyles4 from "../../MapThemes/mapStyles4.js";
-import avocadoTheme from "../../MapThemes/avocadoTheme"
 import PartyList from '../PartyList/PartyList.js';
 
 
@@ -118,19 +116,14 @@ export default function FindParty() {
       case 'VINTAGE':
         setTheme(mapStyles2);
         return;
-      case 'LIGHT':
-        setTheme(mapStyles3);
-        return;
       case 'DEFAULT':
         setTheme(mapStyles);
         return;
       case 'APPLE':
         setTheme(mapStyles4);
         return;
-      case 'AVOCADO':
-        setTheme(avocadoTheme);
-        return;
       default:
+        setTheme(mapStyles2);
         return;
     }
   }
@@ -231,10 +224,8 @@ export default function FindParty() {
           >
             <option value="" disabled selected>Change Theme ↡ </option>
             <option value="VINTAGE">VINTAGE</option>
-            <option value="LIGHT">ORANGE</option>
             <option value="DEFAULT">DARK</option>
             <option value="APPLE">APPLE</option>
-            <option value="AVOCADO">AVOCADO</option>
           </select>
         </div>
 
