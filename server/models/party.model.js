@@ -5,37 +5,28 @@ const Schema = mongoose.Schema;
 const partySchema = new Schema({
   artists: {
     type: String,
-    required: false,
-    unique: false,
   },
   venue: {
     type: String,
-    required: false,
   },
   date: {
     type: Date,
     default: Date.now(),
-    required: false,
   },
   genre: {
     type: String,
-    required: false,
   },
   lat: {
     type: Number,
-    required: false,
   },
   lng: {
     type: Number,
-    required: false,
   },
   iconURL: {
     type: String,
-    required: false,
   },
   instagram: {
     type: String,
-    required: false,
   },
   score: {
     type: Number, default: 0, required: false
@@ -46,11 +37,9 @@ const partySchema = new Schema({
   },
   partyImage: {
     type: String,
-    required: false
   },
   userId: {
     type: Number,
-    required: false
   }
 });
 
