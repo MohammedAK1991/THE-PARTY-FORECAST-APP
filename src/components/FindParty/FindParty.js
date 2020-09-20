@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { Image, Transformation } from 'cloudinary-react';
 import Locate from '../Locate/Locate';
@@ -66,7 +66,7 @@ export default function FindParty() {
     getDataAxios();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
         setSelected(null);
@@ -154,8 +154,8 @@ export default function FindParty() {
     setSelected(null);
   };
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
