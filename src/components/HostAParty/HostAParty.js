@@ -209,6 +209,7 @@ export default function HostAParty({ userId }) {
 
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
+  console.log('rendered')
 
   return (
     <div>

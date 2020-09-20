@@ -90,7 +90,7 @@ export default function FindParty() {
     setParties(filteredParties);
   };
 
-  const handleDateChange = (e) => {
+  const handleDateChange = useCallback((e) => {
     const currentParties = [...allParties]
     const { value } = e.target;
 
@@ -108,9 +108,9 @@ export default function FindParty() {
       setParties(filteredParties);
       return;
     }
-  }
+  }, [allParties]);
 
-  const handleThemeChange = (e) => {
+  const handleThemeChange = useCallback((e) => {
     const { value } = e.target;
     switch (value) {
       case 'VINTAGE':
@@ -126,7 +126,7 @@ export default function FindParty() {
         setTheme(mapStyles2);
         return;
     }
-  }
+  }, []);
 
   const handleGoing = async (selected) => {
     await axios.post(`${serverApiUrl}/parties/${selected._id}/going`)
@@ -159,17 +159,16 @@ export default function FindParty() {
     mapRef.current = map;
   }, []);
 
-  const handlePanTo = async ({ lat, lng }) => {
+  const handlePanTo = useCallback(({ lat, lng }) => {
     setTimeout(() => {
       mapRef.current.panTo({ lat, lng });
     }, 500)
-
     setTimeout(() => {
-      mapRef.current.setZoom(18.5);
+      mapRef.current.setZoom(19.5);
     }, 700)
-  }
+  }, []);
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(18.5);
   }, []);
@@ -260,27 +259,24 @@ export default function FindParty() {
           />
         ))}
 
-        {true ? (
-          <Marker
-            className="bounce"
-            zIndex={10}
-            animation={window.google.maps.Animation.BOUNCE}
-            key={Math.random() * 1000}
-            position={{ lat: 41.3851, lng: 2.1734 }}
-            icon={{
-              url: `/cartman-1.png`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(30, 55),
-              scaledSize: new window.google.maps.Size(60, 50),
-              labelOrigin: new window.google.maps.Point(26, 55)
-            }}
-            label={{
-              color: 'orange', fontWeight: 'bold', fontSize: '14px', text: 'You are here!', fontFamily: 'Avenir'
-            }}
-            labelAnchor={new window.google.maps.Point(200, 0)}
-          />
-        ) : null
-        }
+        <Marker
+          className="bounce"
+          zIndex={10}
+          animation={window.google.maps.Animation.BOUNCE}
+          key={Math.random() * 1000}
+          position={{ lat: 41.3851, lng: 2.1734 }}
+          icon={{
+            url: `/cartman-1.png`,
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(30, 55),
+            scaledSize: new window.google.maps.Size(60, 50),
+            labelOrigin: new window.google.maps.Point(26, 55)
+          }}
+          label={{
+            color: 'orange', fontWeight: 'bold', fontSize: '14px', text: 'You are here!', fontFamily: 'Avenir'
+          }}
+          labelAnchor={new window.google.maps.Point(200, 0)}
+        />
 
         {selected ? (
           <InfoWindow
