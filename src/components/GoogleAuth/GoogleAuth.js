@@ -74,8 +74,9 @@ class GoogleAuth extends React.Component {
         {this.renderAuthButton()}
       </div>
     } else {
-      return <div style={{ color: 'yellow', zindex: '1000', fontWeight: 'bolder' }}>
+      return <div style={{ color: 'black', zindex: '1000', fontWeight: 'bolder' }}>
         {this.renderAuthButton()}
+        google auth yo
       </div>
     }
   }
