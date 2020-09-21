@@ -4,8 +4,9 @@ import { history } from '../../history.js';
 import '../../index.css';
 import FindParty from '../FindParty/FindParty.js';
 import Header from './Header.js'
+import SubmittedParty from '../SubmittedParty.js';
 const HostAParty = lazy(() => import('../HostAParty/HostAParty'));
-const GoogleAuth = lazy(() => import('../GoogleAuth/GoogleAuth'));
+// const GoogleAuth = lazy(() => import('../GoogleAuth/GoogleAuth'));
 
 export default function AppRouter() {
   const [isSignedIn, setIsSignedIn] = React.useState(null);
@@ -39,6 +40,7 @@ export default function AppRouter() {
             <HostAParty userId={userId} />
           </Suspense>
         </Route>
+        <Route path='/submitted/' component={SubmittedParty} />
       </div>
     </Router>
   );

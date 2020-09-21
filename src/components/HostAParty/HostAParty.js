@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../index.css';
 import Locate from '../Locate/Locate';
 import Search from '../Search/Search';
-import { generateIconURL } from '../../ApiClient'
+import { generateIconURL } from '../../ApiClient';
+import { history } from '../history.js';
 
 import {
   GoogleMap,
@@ -71,6 +73,7 @@ export default function HostAParty({ userId }) {
   useEffect(() => {
     const getDataAxios = async () => {
       const { data: parties } = await axios.get(`${serverApiUrl}/parties/${userId || 1234567}`);
+      // const { isLoading, error, data: parties } = useQuery('fetchUsersParties', () => axios.get(`${serverApiUrl}/parties/${userId || 1234567}`))
       const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
 
       setParties(filteredParties);
@@ -139,7 +142,7 @@ export default function HostAParty({ userId }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (!previewFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
@@ -184,6 +187,7 @@ export default function HostAParty({ userId }) {
             partyImage: imageURL,
           })
           setSubmitted(true);
+          history.push('/submitted');
 
           const currentPartyList = [...partyList];
           currentPartyList.push(party);
@@ -254,7 +258,7 @@ export default function HostAParty({ userId }) {
               setPreviewSource('');
             }}
           >
-            <form className="ui form " onSubmit={handleSubmit}>
+            <form className="ui form" onSubmit={handleSubmit}>
               <label htmlFor="venue">VENUE</label>
               <input
                 type="text"
@@ -321,7 +325,17 @@ export default function HostAParty({ userId }) {
               />
               <br />
               <button className="ui animated button primary" type="submit" disabled={validateForm()}>
-                <div class="visible content">SUBMIT</div><div class="hidden content"><i aria-hidden="true" class="thumbs up icon"></i></div>
+                <div class="visible content">
+                  SUBMIT
+                </div>
+                <div class="hidden content">
+                  <Link to='/submitted' className="ui button" onClick={(e) => {
+                    history.push('/submitted')
+                    handleSubmit(e)
+                  }}>
+                    <i aria-hidden="true" class="thumbs up icon"></i>
+                  </Link>
+                </div>
               </button>
             </form>
           </InfoWindow>

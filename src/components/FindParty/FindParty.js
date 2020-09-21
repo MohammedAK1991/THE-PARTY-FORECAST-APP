@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { Image, Transformation } from 'cloudinary-react';
-// import Locate from '../Locate/Locate';
 import Search from '../Search/Search';
 
 import moment from "moment";
@@ -59,12 +58,18 @@ export default function FindParty() {
   useEffect(() => {
     const getDataAxios = async () => {
       const { data: parties } = await axios.get(`${serverApiUrl}/parties`);
-      const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
+      // const { isLoading, error, data: parties } = useQuery('fetchAllParties', () => axios.get(`${serverApiUrl}/parties`))
+      const filteredParties = parties?.filter(party => Date.parse(party.date) > Date.now())
       setAllParties(filteredParties);
       setParties(filteredParties);
     }
     getDataAxios();
   }, []);
+
+  // const { isLoading, error, data: fecthedParties } = useQuery('fetchAllParties', () => axios.get(`${serverApiUrl}/parties`))
+  // const filteredParties = fecthedParties?.filter(party => Date.parse(party.date) > Date.now())
+  // setAllParties(filteredParties);
+  // setParties(filteredParties);
 
   useEffect(() => {
     const listener = e => {
