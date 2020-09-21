@@ -180,7 +180,7 @@ export default function FindParty() {
     <div>
       <div id="options">
         <Locate panTo={panTo} id="locate_find" />
-        <Search panTo={panTo} />
+        <Search panTo={panTo} className='search_find' />
 
         <div className="filter">
           <label htmlFor="genre" style={{ color: 'yellow' }}>
@@ -190,7 +190,6 @@ export default function FindParty() {
               onChange={handleChange}
               style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
             >
-              <i aria-hidden="true" className="filter icon" style={{ zindex: 111 }}></i>
               <option value="NO" disabled selected>Genre ↡ </option>
               <option value="EDM">EDM</option>
               <option value="TECHNO">TECHNO</option>

@@ -213,10 +213,10 @@ export default function HostAParty({ userId }) {
 
   return (
     <div>
-      <div className="options" style={{ position: 'absolute', top: '3%', left: '30%', height: '1%', width: '5%', fontSize: 10 }}>
+      <div className="options" style={{ position: 'absolute', top: '2%', left: '18%', height: '1%', width: '45%', fontSize: 10, minWidth: '400px' }}>
         <Search panTo={panTo} />
       </div>
-      <Locate panTo={panTo} style={{ position: 'absolute', top: '50%', left: '55%', zindex: '1000', }} id="locate_host" />
+      <Locate panTo={panTo} id="locate_host" />
 
       <GoogleMap
         id="map"

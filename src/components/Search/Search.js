@@ -12,7 +12,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-export default function Search({ panTo }) {
+export default function Search({ panTo, className }) {
   const {
     ready,
     value,
@@ -44,7 +44,7 @@ export default function Search({ panTo }) {
   };
 
   return (
-    <div className="search">
+    <div className={className || 'search'}>
       <Combobox onSelect={handleSelect} className="ui input">
         <ComboboxInput
           value={value}

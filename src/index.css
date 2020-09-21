@@ -44,33 +44,18 @@ code {
     background-color: red;
 }
 
-
-/* h1 {
-    position: absolute;
-    top: 0.8rem;
-    left: 1rem;
-    color: #281414;
-    z-index: 10;
-    margin: 0;
-    padding: 0;
-    font-family: "Rubik Mono One", sans-serif;
-} */
-
 #ui_search {
     background-color: black;
-    /* position: absolute */
     width: 38vw;
-    height: 6vh;
+    height: 5.6vh;
     padding-left: 0.5vw;
     margin-top: 6px;
-    /* top: 2%; */
 }
 
 #ui_search_find {
     background-color: black;
-    /* position: absolute; */
     width: 38vw;
-    height: 6vh;
+    height: 5.6vh;
     padding-left: 0.5vw;
 }
 
@@ -116,17 +101,38 @@ code {
     position: absolute;
     top: 3.1vh;
     left: 25%;
-    /* transform: translateX(-50%); */
     width: 100%;
     max-width: 450px;
     z-index: 10;
     border: none;
     outline: none;
     height: 10rem;
-    /* background: yellow; */
 }
 
 .search input {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: lightgray;
+    font-size: 1.3rem;
+    border-radius: 1%;
+}
+
+.search_find {
+    position: absolute;
+    top: 4.4vh;
+    left: 25%;
+    width: 100%;
+    max-width: 450px;
+    z-index: 10;
+    border: none;
+    outline: none;
+    height: 10rem;
+}
+
+.search_find input {
     padding: 0.5rem;
     font-size: 1.1rem;
     width: 100%;
@@ -169,7 +175,7 @@ code {
 
 .locate_find {
     position: absolute;
-    top: 5vh;
+    top: 6vh;
     left: 0;
     background: none;
     border: none;
@@ -185,26 +191,6 @@ code {
 #partyList:hover {
     cursor: pointer;
 }
-
-
-/* .widget2 {
-    position: absolute;
-    height: 100vh;
-    width: 10vw;
-    background-color: white;
-    z-index: 20;
-    left: -8.5rem;
-} */
-
-
-/* .widget2:hover+.widget {
-    display: block;
-} */
-
-
-/* .widget2:hover {
-    left: 0;
-} */
 
 .widget {
     margin: 1px;
@@ -242,32 +228,17 @@ code {
     padding: 10px;
 }
 
-
-/* copied css */
-
-
-/* Style the links inside the sidenav */
-
 #mySidenav a {
     z-index: 40;
     position: absolute;
-    /* Position them relative to the browser window */
     left: -98px;
-    /* Position them outside of the screen */
     transition: 0.3s;
-    /* Add transition on hover */
     padding: 15px;
-    /* 15px padding */
     width: 100px;
-    /* Set a specific width */
     text-decoration: none;
-    /* Remove underline */
     font-size: 20px;
-    /* Increase font size */
     color: white;
-    /* White text color */
     border-radius: 0 5px 5px 0;
-    /* Rounded corners on the top right and bottom right side */
 }
 
 #mySidenav:first-child {
@@ -317,7 +288,6 @@ code {
     width: 100vw;
     font-family: "Avenir";
     padding: 20px;
-    /* Red */
 }
 
 #MainPartyList {
@@ -328,28 +298,19 @@ code {
     top: 66%;
     color: white;
     background-color: rgb(33, 89, 72);
-    /* copied */
     z-index: 40;
     position: absolute;
-    /* Position them relative to the browser window */
     left: -13.8%;
-    /* Position them outside of the screen */
     transition: 0.3s;
     /* Add transition on hover */
     padding: 15px;
-    /* 15px padding */
     width: 14vw;
     height: 31vh;
     overflow-y: scroll;
-    /* overflow-x: visible; */
-    /* Set a specific width */
     text-decoration: none;
-    /* Remove underline */
     font-size: 20px;
     font-family: "Avenir";
-    /* Increase font size */
     color: black;
-    /* White text color */
     border-radius: 0 5px 5px 0;
     display: flex;
 }
@@ -373,7 +334,7 @@ code {
     /* On mouse-over, make the elements appear as they should */
 }
 
-#options {
+.options {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -392,7 +353,7 @@ code {
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 3.6vh;
+        top: 5.6vh;
         left: 40%;
         background: none;
         border: none;
@@ -400,7 +361,7 @@ code {
         width: 2vw;
     }
     .filter select {
-        max-width: 15vw;
+        max-width: 12vw;
         min-width: 10vw;
         height: 35px;
         padding: 4px;
@@ -431,15 +392,15 @@ code {
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 3.6vh;
+        top: 5.6vh;
         left: 40%;
         background: none;
         border: none;
         z-index: 10;
-        width: 4vw;
+        width: 3vw;
     }
     .filter select {
-        max-width: 15vw;
+        max-width: 13vw;
         min-width: 10vw;
         height: 35px;
         padding: 4px;
@@ -466,15 +427,15 @@ code {
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 3.6vh;
+        top: 5.6vh;
         left: 40%;
         background: none;
         border: none;
         z-index: 10;
-        max-width: 10vw;
+        max-width: 9vw;
     }
     .filter select {
-        max-width: 15vw;
+        max-width: 14vw;
         min-width: 10vw;
         height: 35px;
         padding: 4px;
@@ -501,15 +462,15 @@ code {
         position: absolute;
         display: flex;
         flex-direction: column;
-        top: 3.6vh;
+        top: 5.6vh;
         left: 45%;
         background: none;
         border: none;
         z-index: 10;
-        width: 42vw;
+        width: 30vw;
     }
     .filter select {
-        max-width: 15vw;
+        max-width: 14vw;
         min-width: 10vw;
         height: 35px;
         padding: 4px;
@@ -535,7 +496,7 @@ code {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 3.6vh;
+    top: 5.6vh;
     left: 65%;
     background: none;
     border: none;
@@ -544,7 +505,7 @@ code {
 }
 
 .filter select {
-    max-width: 15vw;
+    max-width: 10vw;
     min-width: 10vw;
     height: 35px;
     padding: 4px;
@@ -576,7 +537,7 @@ code {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 3.6vh;
+    top: 5.6vh;
     left: 78.1%;
     background: none;
     border: none;
@@ -607,7 +568,7 @@ code {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 3.6vh;
+    top: 5.6vh;
     left: 88.5%;
     background: none;
     border: none;

@@ -4,12 +4,12 @@ import GoogeAuth from '../GoogleAuth/GoogleAuth.js';
 
 const Header = ({ handleSignIn, handleSignOut, setIsSignedIn }) => {
   return (
-    <div className="ui pointing menu large inverted" style={{ color: 'black' }}>
-      <Link to="/" className="item">
+    <div className="ui pointing menu inverted" style={{ color: 'black' }}>
+      <Link to="/" className="ui purple item bold" style={{ backgroundColor: 'purple' }}>
         PRTYFRCST
       </Link>
       <div className="right menu">
-        <Link to="/" className="item">
+        <Link to="/" className="purple item">
           FIND PARTIES
         </Link>
         <Link to="/host" className="item">
