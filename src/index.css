@@ -120,18 +120,18 @@ code {
     z-index: 10;
     border: none;
     outline: none;
-    height: 10rem;
+    height: 9rem;
     /* background: yellow; */
 }
 
 .search input {
     padding: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     width: 100%;
     border: none;
     outline: none;
     background: lightgray;
-    font-size: 20pt;
+    /* font-size: 20pt; */
     border-radius: 1%;
 }
 
