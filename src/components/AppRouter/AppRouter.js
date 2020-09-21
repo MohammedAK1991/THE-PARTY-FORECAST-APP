@@ -79,9 +79,15 @@ export default function AppRouter() {
   return (
     <Router history={history} >
       <div>
-        <Header />
+        <Header
+          handleSignIn={handleSignIn}
+          handleSignOut={handleSignOut}
+          setIsSignedIn={setIsSignedIn}
+          style={{ position: 'absolute' }}
+        />
         <Route path="/" exact={true}>
           <FindParty
+            style={{ margin: 0 }}
             userId={userId}
           />
         </Route>

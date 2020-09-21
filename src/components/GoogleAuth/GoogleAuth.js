@@ -57,7 +57,7 @@ class GoogleAuth extends React.Component {
     this.setState({
       isSignedIn: this.auth.isSignedIn.get(),
     })
-    this.props.handleSignIn(this.auth.currentUser.get().getId());
+    // this.props.handleSignIn(this.auth.currentUser.get().getId());
   }
 
   onSignOutClick = () => {
@@ -65,7 +65,7 @@ class GoogleAuth extends React.Component {
     this.setState({
       isSignedIn: this.auth.isSignedIn.get(),
     })
-    this.props.handleSignOut();
+    // this.props.handleSignOut();
   }
 
   render() {
@@ -76,7 +76,6 @@ class GoogleAuth extends React.Component {
     } else {
       return <div style={{ color: 'black', zindex: '1000', fontWeight: 'bolder' }}>
         {this.renderAuthButton()}
-        google auth yo
       </div>
     }
   }

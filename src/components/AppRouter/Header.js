@@ -2,20 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogeAuth from '../GoogleAuth/GoogleAuth.js';
 
-const Header = () => {
+const Header = ({ handleSignIn, handleSignOut, setIsSignedIn }) => {
   return (
-    <div className="ui secondary pointing menu">
+    <div className="ui pointing menu inverted" style={{ color: 'black' }}>
       <Link to="/" className="item">
-        PARTYFORECAST
+        PRTYFRCST
       </Link>
       <div className="right menu">
         <Link to="/" className="item">
-          WHERE MA PARTIES AT??
+          FIND PARTIES
         </Link>
         <Link to="/host" className="item">
           HOST
         </Link>
-        <GoogeAuth className="item" />
+        <GoogeAuth
+          className="item"
+          handleSignIn={handleSignIn}
+          handleSignOut={handleSignOut}
+          setIsSignedIn={setIsSignedIn}
+        />
       </div>
     </div>
   );

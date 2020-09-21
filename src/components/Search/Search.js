@@ -55,7 +55,7 @@ export default function Search({ panTo }) {
           id="ui_search"
           style={{ fontFamily: 'Avenir', color: 'white' }}
         />
-        <i aria-hidden="false" className="search icon large" id="search_icon"></i>
+        {/* <i aria-hidden="false" className="search icon large" id="search_icon"></i> */}
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&

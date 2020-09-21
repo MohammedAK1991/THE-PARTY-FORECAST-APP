@@ -113,32 +113,32 @@ code {
 .search {
     position: absolute;
     top: 17%;
-    left: 40%;
+    left: 35%;
     transform: translateX(-50%);
-    width: 100%;
-    max-width: 450px;
+    width: 60%;
+    max-width: 50px;
     z-index: 10;
     border: none;
     outline: none;
-    height: 10rem;
+    height: 7rem;
     /* background: yellow; */
 }
 
 .search input {
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    width: 100%;
+    padding: 0.1rem;
+    font-size: .8rem;
+    width: fit-content;
     border: none;
     outline: none;
     background: lightgray;
-    font-size: 20pt;
-    border-radius: 1%;
+    font-size: 20px;
+    border-radius: 10%;
 }
 
 .locate {
     position: absolute;
-    top: 0.8vh;
-    left: 63%;
+    top: 5%;
+    left: 0%;
     background: none;
     border: none;
     z-index: 10;
@@ -147,7 +147,7 @@ code {
 .locate_host {
     position: absolute;
     top: 2.8vh;
-    left: 63%;
+    left: 3%;
     background: none;
     border: none;
     z-index: 10;
