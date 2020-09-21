@@ -17,8 +17,8 @@ import mapStyles2 from "../../MapThemes/mapStyles2.js";
 const libraries = ["places"];
 
 const mapContainerStyle = {
-  height: "100vh",
-  width: "100vw",
+  height: '100vh',
+  width: '100vw',
 };
 
 const options = {
@@ -208,15 +208,15 @@ export default function HostAParty({ userId }) {
 
 
   if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  if (!isLoaded) return null//"Loading...";
   console.log('rendered')
 
   return (
     <div>
-      <div className="options" style={{ position: 'absolute', top: '1%', left: '25%' }}>
+      <div className="options" style={{ position: 'absolute', top: '2%', left: '18%', height: '1%', width: '45%', fontSize: 10, minWidth: '400px' }}>
         <Search panTo={panTo} />
       </div>
-      <Locate panTo={panTo} />
+      <Locate panTo={panTo} id="locate_host" />
 
       <GoogleMap
         id="map"
@@ -227,6 +227,7 @@ export default function HostAParty({ userId }) {
         onClick={onMapClick}
         onLoad={onMapLoad}
         clickableIcons={true}
+        style={{ display: 'none' }}
       >
         {parties ? parties.map((party) => (
           <Marker

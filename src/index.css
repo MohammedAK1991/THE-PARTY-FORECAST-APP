@@ -1,6 +1,7 @@
 * {
     margin: 0;
     font-family: "Avenir";
+    box-sizing: border-box;
 }
 
 body {
@@ -8,7 +9,8 @@ body {
     font-family: "Avenir", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 18px;
+    font-size: 16px;
+    height: 100vh;
 }
 
 code {
@@ -42,33 +44,18 @@ code {
     background-color: red;
 }
 
-
-/* h1 {
-    position: absolute;
-    top: 0.8rem;
-    left: 1rem;
-    color: #281414;
-    z-index: 10;
-    margin: 0;
-    padding: 0;
-    font-family: "Rubik Mono One", sans-serif;
-} */
-
 #ui_search {
     background-color: black;
-    /* position: absolute */
     width: 38vw;
-    height: 6vh;
+    height: 5.6vh;
     padding-left: 0.5vw;
     margin-top: 6px;
-    /* top: 2%; */
 }
 
 #ui_search_find {
     background-color: black;
-    /* position: absolute; */
     width: 38vw;
-    height: 6vh;
+    height: 5.6vh;
     padding-left: 0.5vw;
 }
 
@@ -80,7 +67,7 @@ code {
 
 .search_host {
     position: absolute;
-    top: 3.4%;
+    top: 3.6%;
     left: 40%;
     transform: translateX(-50%);
     width: 100%;
@@ -112,33 +99,54 @@ code {
 
 .search {
     position: absolute;
-    top: 17%;
-    left: 40%;
-    transform: translateX(-50%);
+    top: 3.1vh;
+    left: 25%;
     width: 100%;
     max-width: 450px;
     z-index: 10;
     border: none;
     outline: none;
-    height: 9rem;
-    /* background: yellow; */
+    height: 10rem;
 }
 
 .search input {
     padding: 0.5rem;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     width: 100%;
     border: none;
     outline: none;
     background: lightgray;
-    /* font-size: 20pt; */
+    font-size: 1.3rem;
+    border-radius: 1%;
+}
+
+.search_find {
+    position: absolute;
+    top: 4.4vh;
+    left: 25%;
+    width: 100%;
+    max-width: 450px;
+    z-index: 10;
+    border: none;
+    outline: none;
+    height: 10rem;
+}
+
+.search_find input {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: lightgray;
+    font-size: 1.3rem;
     border-radius: 1%;
 }
 
 .locate {
     position: absolute;
-    top: 0.8vh;
-    left: 63%;
+    top: 7%;
+    left: 0;
     background: none;
     border: none;
     z-index: 10;
@@ -146,8 +154,8 @@ code {
 
 .locate_host {
     position: absolute;
-    top: 2.8vh;
-    left: 63%;
+    top: 7%;
+    left: 0;
     background: none;
     border: none;
     z-index: 10;
@@ -160,7 +168,22 @@ code {
 }
 
 .locate img {
-    width: 50px;
+    width: 40px;
+    cursor: pointer;
+    z-index: 300;
+}
+
+.locate_find {
+    position: absolute;
+    top: 6vh;
+    left: 0;
+    background: none;
+    border: none;
+    z-index: 10;
+}
+
+.locate_find img {
+    width: 40px;
     cursor: pointer;
     z-index: 300;
 }
@@ -168,26 +191,6 @@ code {
 #partyList:hover {
     cursor: pointer;
 }
-
-
-/* .widget2 {
-    position: absolute;
-    height: 100vh;
-    width: 10vw;
-    background-color: white;
-    z-index: 20;
-    left: -8.5rem;
-} */
-
-
-/* .widget2:hover+.widget {
-    display: block;
-} */
-
-
-/* .widget2:hover {
-    left: 0;
-} */
 
 .widget {
     margin: 1px;
@@ -225,32 +228,17 @@ code {
     padding: 10px;
 }
 
-
-/* copied css */
-
-
-/* Style the links inside the sidenav */
-
 #mySidenav a {
     z-index: 40;
     position: absolute;
-    /* Position them relative to the browser window */
     left: -98px;
-    /* Position them outside of the screen */
     transition: 0.3s;
-    /* Add transition on hover */
     padding: 15px;
-    /* 15px padding */
     width: 100px;
-    /* Set a specific width */
     text-decoration: none;
-    /* Remove underline */
     font-size: 20px;
-    /* Increase font size */
     color: white;
-    /* White text color */
     border-radius: 0 5px 5px 0;
-    /* Rounded corners on the top right and bottom right side */
 }
 
 #mySidenav:first-child {
@@ -258,7 +246,7 @@ code {
 }
 
 #mySidenav a:hover {
-    left: 0;
+    left: 0%;
     /* On mouse-over, make the elements appear as they should */
 }
 
@@ -278,7 +266,7 @@ code {
 
 #login {
     top: 15%;
-    background-color: rgb(0, 160, 232);
+    background-color: rgb(0, 145, 232);
     text-align: center;
     display: flex;
 }
@@ -300,7 +288,6 @@ code {
     width: 100vw;
     font-family: "Avenir";
     padding: 20px;
-    /* Red */
 }
 
 #MainPartyList {
@@ -311,28 +298,19 @@ code {
     top: 66%;
     color: white;
     background-color: rgb(33, 89, 72);
-    /* copied */
     z-index: 40;
     position: absolute;
-    /* Position them relative to the browser window */
     left: -13.8%;
-    /* Position them outside of the screen */
     transition: 0.3s;
     /* Add transition on hover */
     padding: 15px;
-    /* 15px padding */
     width: 14vw;
     height: 31vh;
     overflow-y: scroll;
-    /* overflow-x: visible; */
-    /* Set a specific width */
     text-decoration: none;
-    /* Remove underline */
     font-size: 20px;
     font-family: "Avenir";
-    /* Increase font size */
     color: black;
-    /* White text color */
     border-radius: 0 5px 5px 0;
     display: flex;
 }
@@ -356,11 +334,7 @@ code {
     /* On mouse-over, make the elements appear as they should */
 }
 
-#MainPartyList {
-    /* display: flex; */
-}
-
-#options {
+.options {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -372,30 +346,174 @@ code {
 }
 
 
+/* // Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 5.6vh;
+        left: 40%;
+        background: none;
+        border: none;
+        z-index: 10;
+        width: 2vw;
+    }
+    .filter select {
+        max-width: 12vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+    .filterTheme {
+        min-width: 2vw;
+        max-width: 4vw;
+    }
+}
+
+
+/* // Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 5.6vh;
+        left: 40%;
+        background: none;
+        border: none;
+        z-index: 10;
+        width: 3vw;
+    }
+    .filter select {
+        max-width: 13vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+}
+
+
+/* // Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 5.6vh;
+        left: 40%;
+        background: none;
+        border: none;
+        z-index: 10;
+        max-width: 9vw;
+    }
+    .filter select {
+        max-width: 14vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+}
+
+
+/* // Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 5.6vh;
+        left: 45%;
+        background: none;
+        border: none;
+        z-index: 10;
+        width: 30vw;
+    }
+    .filter select {
+        max-width: 14vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+}
+
+
 /* for genre filter */
 
 .filter {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 1.8vh;
-    left: 68%;
+    top: 5.6vh;
+    left: 65%;
     background: none;
     border: none;
     z-index: 10;
-    width: 8vw;
+    width: 4vw;
 }
 
 .filter select {
-    width: 150px;
+    max-width: 10vw;
+    min-width: 10vw;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
-    /* display: inline-block; */
+    display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -406,36 +524,11 @@ code {
     position: relative;
 }
 
-
-/*
-.filter label:after {
-    content: "<>";
-    font: 12px "Consolas", monospace;
-    color: #666;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
-    right: -16px;
-    top: 8px;
-    padding: 0 0 2px;
-    border-bottom: 1px solid #ddd;
+#map {
     position: absolute;
-    pointer-events: none;
+    top: 5.25%;
+    left: 0
 }
-*/
-
-
-/* .filter label:before {
-    content: "";
-    right: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: #eee;
-    position: absolute;
-    pointer-events: none;
-    display: block;
-} */
 
 
 /* for date filter */
@@ -444,8 +537,8 @@ code {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 1.8vh;
-    left: 79.1%;
+    top: 5.6vh;
+    left: 78.1%;
     background: none;
     border: none;
     z-index: 10;
@@ -453,11 +546,10 @@ code {
 }
 
 .filterDate select {
-    width: 137px;
+    max-width: 8vw;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
@@ -472,54 +564,26 @@ code {
     position: relative;
 }
 
-
-/* .filterDate label:after {
-    content: "<>";
-    font: 11px "Consolas", monospace;
-    color: white;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
-    right: 10px;
-    z-index: 1000;
-    top: 8px;
-    padding: 0 0 2px;
-    border-bottom: 1px solid #ddd;
-    position: absolute;
-    pointer-events: none;
-} */
-
-
-/* .filterDate label:before {
-    content: "";
-    right: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: #eee;
-    position: absolute;
-    pointer-events: none;
-    display: block;
-} */
-
 .filterTheme {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 1.8vh;
-    left: 89.5%;
+    top: 5.6vh;
+    left: 88.5%;
     background: none;
     border: none;
     z-index: 10;
-    width: 9vw;
+    max-width: 9vw;
+    min-width: 2vw;
+    ;
 }
 
 .filterTheme select {
-    width: 136px;
+    max-width: 9vw;
+    min-width: 2vw;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
@@ -574,7 +638,7 @@ code {
         -webkit-transform: translateY(-20px);
         transform: translateY(-20px);
     }
-    60% {
+    45% {
         -webkit-transform: translateY(-12px);
         transform: translateY(-12px);
     }
@@ -593,7 +657,7 @@ code {
         -webkit-transform: translateY(-20px);
         transform: translateY(-20px);
     }
-    60% {
+    45% {
         -webkit-transform: translateY(-12px);
         transform: translateY(-12px);
     }

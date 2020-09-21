@@ -12,7 +12,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-export default function Search({ panTo }) {
+export default function Search({ panTo, className }) {
   const {
     ready,
     value,
@@ -44,8 +44,8 @@ export default function Search({ panTo }) {
   };
 
   return (
-    <div className="search">
-      <Combobox onSelect={handleSelect} className="ui icon input">
+    <div className={className || 'search'}>
+      <Combobox onSelect={handleSelect} className="ui input">
         <ComboboxInput
           value={value}
           onChange={handleInput}
@@ -55,7 +55,7 @@ export default function Search({ panTo }) {
           id="ui_search"
           style={{ fontFamily: 'Avenir', color: 'white' }}
         />
-        <i aria-hidden="false" className="search icon large" id="search_icon"></i>
+        {/* <i aria-hidden="false" className="search icon large" id="search_icon"></i> */}
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
