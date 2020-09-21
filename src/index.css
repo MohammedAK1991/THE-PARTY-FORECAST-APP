@@ -1,6 +1,7 @@
 * {
     margin: 0;
     font-family: "Avenir";
+    box-sizing: border-box;
 }
 
 body {
@@ -8,7 +9,8 @@ body {
     font-family: "Avenir", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 18px;
+    font-size: 16px;
+    height: 100vh;
 }
 
 code {
@@ -80,7 +82,7 @@ code {
 
 .search_host {
     position: absolute;
-    top: 3.4%;
+    top: 3.6%;
     left: 40%;
     transform: translateX(-50%);
     width: 100%;
@@ -112,33 +114,33 @@ code {
 
 .search {
     position: absolute;
-    top: 17%;
-    left: 35%;
-    transform: translateX(-50%);
-    width: 60%;
-    max-width: 50px;
+    top: 3.1vh;
+    left: 25%;
+    /* transform: translateX(-50%); */
+    width: 100%;
+    max-width: 450px;
     z-index: 10;
     border: none;
     outline: none;
-    height: 7rem;
+    height: 10rem;
     /* background: yellow; */
 }
 
 .search input {
-    padding: 0.1rem;
-    font-size: .8rem;
-    width: fit-content;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    width: 100%;
     border: none;
     outline: none;
     background: lightgray;
-    font-size: 20px;
-    border-radius: 10%;
+    font-size: 1.3rem;
+    border-radius: 1%;
 }
 
 .locate {
     position: absolute;
-    top: 5%;
-    left: 0%;
+    top: 7%;
+    left: 0;
     background: none;
     border: none;
     z-index: 10;
@@ -146,8 +148,8 @@ code {
 
 .locate_host {
     position: absolute;
-    top: 2.8vh;
-    left: 3%;
+    top: 7%;
+    left: 0;
     background: none;
     border: none;
     z-index: 10;
@@ -160,7 +162,22 @@ code {
 }
 
 .locate img {
-    width: 50px;
+    width: 40px;
+    cursor: pointer;
+    z-index: 300;
+}
+
+.locate_find {
+    position: absolute;
+    top: 5vh;
+    left: 0;
+    background: none;
+    border: none;
+    z-index: 10;
+}
+
+.locate_find img {
+    width: 40px;
     cursor: pointer;
     z-index: 300;
 }
@@ -258,7 +275,7 @@ code {
 }
 
 #mySidenav a:hover {
-    left: 0;
+    left: 0%;
     /* On mouse-over, make the elements appear as they should */
 }
 
@@ -278,7 +295,7 @@ code {
 
 #login {
     top: 15%;
-    background-color: rgb(0, 160, 232);
+    background-color: rgb(0, 145, 232);
     text-align: center;
     display: flex;
 }
@@ -356,10 +373,6 @@ code {
     /* On mouse-over, make the elements appear as they should */
 }
 
-#MainPartyList {
-    /* display: flex; */
-}
-
 #options {
     position: absolute;
     display: flex;
@@ -372,30 +385,174 @@ code {
 }
 
 
+/* // Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 3.6vh;
+        left: 40%;
+        background: none;
+        border: none;
+        z-index: 10;
+        width: 2vw;
+    }
+    .filter select {
+        max-width: 15vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+    .filterTheme {
+        min-width: 2vw;
+        max-width: 4vw;
+    }
+}
+
+
+/* // Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 3.6vh;
+        left: 40%;
+        background: none;
+        border: none;
+        z-index: 10;
+        width: 4vw;
+    }
+    .filter select {
+        max-width: 15vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+}
+
+
+/* // Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 3.6vh;
+        left: 40%;
+        background: none;
+        border: none;
+        z-index: 10;
+        max-width: 10vw;
+    }
+    .filter select {
+        max-width: 15vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+}
+
+
+/* // Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .filter {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 3.6vh;
+        left: 45%;
+        background: none;
+        border: none;
+        z-index: 10;
+        width: 42vw;
+    }
+    .filter select {
+        max-width: 15vw;
+        min-width: 10vw;
+        height: 35px;
+        padding: 4px;
+        border-radius: 4px;
+        background: #eee;
+        border: none;
+        outline: none;
+        /* display: inline-block; */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+    .filter label {
+        position: relative;
+    }
+}
+
+
 /* for genre filter */
 
 .filter {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 1.8vh;
-    left: 68%;
+    top: 3.6vh;
+    left: 65%;
     background: none;
     border: none;
     z-index: 10;
-    width: 8vw;
+    width: 4vw;
 }
 
 .filter select {
-    width: 150px;
+    max-width: 15vw;
+    min-width: 10vw;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
-    /* display: inline-block; */
+    display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -406,36 +563,11 @@ code {
     position: relative;
 }
 
-
-/*
-.filter label:after {
-    content: "<>";
-    font: 12px "Consolas", monospace;
-    color: #666;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
-    right: -16px;
-    top: 8px;
-    padding: 0 0 2px;
-    border-bottom: 1px solid #ddd;
+#map {
     position: absolute;
-    pointer-events: none;
+    top: 5.25%;
+    left: 0
 }
-*/
-
-
-/* .filter label:before {
-    content: "";
-    right: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: #eee;
-    position: absolute;
-    pointer-events: none;
-    display: block;
-} */
 
 
 /* for date filter */
@@ -444,8 +576,8 @@ code {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 1.8vh;
-    left: 79.1%;
+    top: 3.6vh;
+    left: 78.1%;
     background: none;
     border: none;
     z-index: 10;
@@ -453,11 +585,10 @@ code {
 }
 
 .filterDate select {
-    width: 137px;
+    max-width: 8vw;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
@@ -472,54 +603,26 @@ code {
     position: relative;
 }
 
-
-/* .filterDate label:after {
-    content: "<>";
-    font: 11px "Consolas", monospace;
-    color: white;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
-    right: 10px;
-    z-index: 1000;
-    top: 8px;
-    padding: 0 0 2px;
-    border-bottom: 1px solid #ddd;
-    position: absolute;
-    pointer-events: none;
-} */
-
-
-/* .filterDate label:before {
-    content: "";
-    right: 0px;
-    top: 0px;
-    width: 20px;
-    height: 20px;
-    background: #eee;
-    position: absolute;
-    pointer-events: none;
-    display: block;
-} */
-
 .filterTheme {
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 1.8vh;
-    left: 89.5%;
+    top: 3.6vh;
+    left: 88.5%;
     background: none;
     border: none;
     z-index: 10;
-    width: 9vw;
+    max-width: 9vw;
+    min-width: 2vw;
+    ;
 }
 
 .filterTheme select {
-    width: 136px;
+    max-width: 9vw;
+    min-width: 2vw;
     height: 35px;
     padding: 4px;
     border-radius: 4px;
-    box-shadow: 0px 0px 4px #9d6;
     background: #eee;
     border: none;
     outline: none;
@@ -574,7 +677,7 @@ code {
         -webkit-transform: translateY(-20px);
         transform: translateY(-20px);
     }
-    60% {
+    45% {
         -webkit-transform: translateY(-12px);
         transform: translateY(-12px);
     }
@@ -593,7 +696,7 @@ code {
         -webkit-transform: translateY(-20px);
         transform: translateY(-20px);
     }
-    60% {
+    45% {
         -webkit-transform: translateY(-12px);
         transform: translateY(-12px);
     }

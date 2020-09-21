@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { Image, Transformation } from 'cloudinary-react';
-import Locate from '../Locate/Locate';
+// import Locate from '../Locate/Locate';
 import Search from '../Search/Search';
 
 import moment from "moment";
@@ -179,7 +179,7 @@ export default function FindParty() {
   return (
     <div>
       <div id="options">
-        <Locate panTo={panTo} />
+        <Locate panTo={panTo} id="locate_find" />
         <Search panTo={panTo} />
 
         <div className="filter">
@@ -191,7 +191,7 @@ export default function FindParty() {
               style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
             >
               <i aria-hidden="true" className="filter icon" style={{ zindex: 111 }}></i>
-              <option value="NO" disabled selected>Filter by Genre ↡ </option>
+              <option value="NO" disabled selected>Genre ↡ </option>
               <option value="EDM">EDM</option>
               <option value="TECHNO">TECHNO</option>
               <option value="ROCK">ROCK</option>
@@ -208,7 +208,7 @@ export default function FindParty() {
             onChange={handleDateChange}
             style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
-            <option value="" disabled selected>Filter by Date ↡ </option>
+            <option value="" disabled selected>Date ↡ </option>
             <option value="TODAY">TODAY</option>
             <option value="TOMORROW">TOMORROW</option>
             <option value="THIS WEEK">THIS WEEK</option>
@@ -221,7 +221,7 @@ export default function FindParty() {
             onChange={handleThemeChange}
             style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
-            <option value="" disabled selected>Change Theme ↡ </option>
+            <option value="" disabled selected>Theme ↡</option>
             <option value="VINTAGE">VINTAGE</option>
             <option value="DEFAULT">DARK</option>
             <option value="APPLE">APPLE</option>
@@ -351,6 +351,29 @@ export default function FindParty() {
         ) : <h1>No parties in list </h1>}
       </div>
     </div>
+  );
+}
+
+function Locate({ panTo }) {
+  return (
+    <button
+      className="locate_find"
+      onClick={(e) => {
+        e.preventDefault()
+        window.navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log(position.coords.latitude, position.coords.longitude)
+            panTo({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          },
+          () => null
+        );
+      }}
+    >
+      <img src="/compass.svg" alt="compass" />
+    </button>
   );
 }
 

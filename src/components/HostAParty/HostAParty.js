@@ -208,15 +208,15 @@ export default function HostAParty({ userId }) {
 
 
   if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  if (!isLoaded) return null//"Loading...";
   console.log('rendered')
 
   return (
     <div>
-      <div className="options.." style={{ position: 'absolute', top: '5%', left: '40%', height: '1%', width: '5%' }}>
+      <div className="options" style={{ position: 'absolute', top: '3%', left: '30%', height: '1%', width: '5%', fontSize: 10 }}>
         <Search panTo={panTo} />
       </div>
-      <Locate panTo={panTo} style={{ position: 'absolute', top: '55%', left: '55%' }} id="locate_host" />
+      <Locate panTo={panTo} style={{ position: 'absolute', top: '50%', left: '55%', zindex: '1000', }} id="locate_host" />
 
       <GoogleMap
         id="map"

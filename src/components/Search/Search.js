@@ -45,7 +45,7 @@ export default function Search({ panTo }) {
 
   return (
     <div className="search">
-      <Combobox onSelect={handleSelect} className="ui icon input">
+      <Combobox onSelect={handleSelect} className="ui input">
         <ComboboxInput
           value={value}
           onChange={handleInput}

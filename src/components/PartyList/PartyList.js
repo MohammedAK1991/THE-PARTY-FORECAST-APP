@@ -48,7 +48,7 @@ export default function PartyList({ partyList, handlePanTo }) {
         </div>
       </div>
       <img src='/clipboard.svg' alt='playlist' className="overflow"
-        style={{ fontFamily: 'Avenir', color: 'yellow', backgroundColor: 'transparent', height: '50px', width: '50px', marginLeft: '50px', top: '10px' }}
+        style={{ fontFamily: 'Avenir', color: 'yellow', backgroundColor: 'transparent', height: '20px', width: '20px', marginLeft: '1vw', top: '10px' }}
       >
       </img>
     </>
