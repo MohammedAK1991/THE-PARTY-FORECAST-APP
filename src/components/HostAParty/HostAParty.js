@@ -28,8 +28,8 @@ const options = {
 };
 
 const center = {
-  lat: 41.3851,
-  lng: 2.1734,
+  lat: 41.4056448,
+  lng: 2.1725184000000004,
 };
 
 const serverApiUrl =
@@ -353,7 +353,7 @@ export default function HostAParty({ userId }) {
           zIndex={10}
           animation={window.google.maps.Animation.BOUNCE}
           key={Math.random() * 100}
-          position={{ lat: 41.3851, lng: 2.1734 }}
+          position={{ lat: 41.4056448, lng: 2.1725184 }}
           icon={{
             url: `/kyle-2.png`,
             origin: new window.google.maps.Point(0, 0),

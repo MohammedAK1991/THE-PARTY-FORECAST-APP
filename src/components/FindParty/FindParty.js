@@ -27,8 +27,8 @@ const mapContainerStyle = {
 };
 
 const center = {
-  lat: 41.3851,
-  lng: 2.1734,
+  lat: 41.4056448,
+  lng: 2.1725184,
 };
 
 const serverApiUrl =
@@ -264,7 +264,7 @@ export default function FindParty() {
           zIndex={10}
           animation={window.google.maps.Animation.BOUNCE}
           key={Math.random() * 1000}
-          position={{ lat: 41.3851, lng: 2.1734 }}
+          position={{ lat: 41.4056448, lng: 2.1725184 }}
           icon={{
             url: `/cartman-1.png`,
             origin: new window.google.maps.Point(0, 0),
