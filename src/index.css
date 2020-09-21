@@ -145,16 +145,16 @@ code {
 
 .locate {
     position: absolute;
-    top: 7%;
+    top: 6.0%;
     left: 0;
     background: none;
     border: none;
     z-index: 10;
 }
 
-.locate_host {
+#locate_host {
     position: absolute;
-    top: 7%;
+    top: 60vh;
     left: 0;
     background: none;
     border: none;
