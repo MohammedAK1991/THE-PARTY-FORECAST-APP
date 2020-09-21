@@ -28,8 +28,8 @@ const options = {
 };
 
 const center = {
-  lat: 41.4056448,
-  lng: 2.1725184000000004,
+  lat: 41.4107542,
+  lng: 2.1745088999999997,
 };
 
 const serverApiUrl =
@@ -208,7 +208,7 @@ export default function HostAParty({ userId }) {
 
 
   if (loadError) return "Error";
-  if (!isLoaded) return null//"Loading...";
+  if (!isLoaded) return "Loading...";
   console.log('rendered')
 
   return (
@@ -354,7 +354,7 @@ export default function HostAParty({ userId }) {
           zIndex={10}
           animation={window.google.maps.Animation.BOUNCE}
           key={Math.random() * 100}
-          position={{ lat: 41.4056448, lng: 2.1725184 }}
+          position={{ lat: 41.4107448, lng: 2.1745088999999997 }}
           icon={{
             url: `/kyle-2.png`,
             origin: new window.google.maps.Point(0, 0),

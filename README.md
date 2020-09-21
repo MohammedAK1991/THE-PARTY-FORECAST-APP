@@ -19,11 +19,11 @@ The Frontend and Backend are hosted on one [Heroku](heroku.com) Dyno, the databa
 <p>
 Create a Party for free with the basic details such as venue, genre of music, name of the artists performing, link to social media and also upload images of the event for potential party-goers
 </p>
-<img src="./public/Host.png"  width=700px />
+<img src="./public/Host.png" alt="PartyForecast" width=700px />
 <p>
 Search any location on the interactive google maps interface, find out more details by clicking on the marker and vote if you're going to the party or not. The most popular parties have the biggest icons making it easy for the user to decide.
 </p>
-<img src="./public/FInd.png"  width=700px />
+<img src="./public/FInd.png" alt="PartyForecast" width=700px />
 
 ## Project Presentation
 
