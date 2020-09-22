@@ -6,8 +6,8 @@ const Header = ({ handleSignIn, handleSignOut, setIsSignedIn, isSignedIn }) => {
 
   return (
     <div className="ui pointing menu inverted" style={{ color: 'black' }}>
-      <Link to="/" className="ui purple item bold" style={{ backgroundColor: 'purple' }}>
-        PRTYFRCST
+      <Link to="/" className="ui large orange item bold" style={{ backgroundColor: 'black', fontWeight: 900}}>
+        PRTY FRCST
       </Link>
       <div className="right menu">
         <Link to="/" className="purple item">
