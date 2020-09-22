@@ -2,11 +2,12 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { history } from '../../history.js';
 import '../../index.css';
-import FindParty from '../FindParty/FindParty.js';
+import FindParty from '../FindParty/FindParty';
 import Header from './Header.js'
-import SubmittedParty from '../SubmittedParty.js';
+import SubmittedParty from '../SubmittedParty';
+import LoginPrompt from '../LoginPrompt'
+
 const HostAParty = lazy(() => import('../HostAParty/HostAParty'));
-// const GoogleAuth = lazy(() => import('../GoogleAuth/GoogleAuth'));
 
 export default function AppRouter() {
   const [isSignedIn, setIsSignedIn] = React.useState(null);
@@ -29,6 +30,7 @@ export default function AppRouter() {
           handleSignIn={handleSignIn}
           handleSignOut={handleSignOut}
           setIsSignedIn={setIsSignedIn}
+          isSignedIn={isSignedIn}
         />
         <Route path="/" exact={true}>
           <FindParty
@@ -41,6 +43,7 @@ export default function AppRouter() {
           </Suspense>
         </Route>
         <Route path='/submitted/' component={SubmittedParty} />
+        <Route path='/loginPrompt/' component={LoginPrompt} />
       </div>
     </Router>
   );

@@ -172,7 +172,7 @@ export default function HostAParty({ userId }) {
           const iconURL = generateIconURL(genre);
 
           party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, imageURL, userId }
-          console.log('submitted', party)
+          // console.log('submitted', party)
 
           await axios.post(`${serverApiUrl}/parties`, {
             artists: artists,
@@ -210,10 +210,8 @@ export default function HostAParty({ userId }) {
     );
   };
 
-
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
-  console.log('rendered')
 
   return (
     <div>
