@@ -39,13 +39,11 @@ HostAParty.defaultProps = {
 }
 
 export default function HostAParty({ userId, center }) {
-  console.log(center)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-
 
   const initialState = {
     artists: null,
@@ -138,6 +136,7 @@ export default function HostAParty({ userId, center }) {
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
+    // history.push('/submitted')
     if (!previewFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
@@ -316,18 +315,19 @@ export default function HostAParty({ userId, center }) {
                 placeholder="UpLoad Image"
               />
               <br />
-              <button className="ui animated button primary" type="submit" disabled={validateForm()}>
-                <div class="visible content">
-                  SUBMIT
-                </div>
-                <div class="hidden content">
-                  <Link to='/submitted' onClick={(e) => {
-                    history.push('/submitted')
+              <button className="ui button blue" disabled={validateForm()}>
+                <Link
+                  className="ui button primary"
+                  disabled={validateForm()}
+                  to='/submitted'
+                  onClick={(e) => {
+                    e.persist();
                     handleSubmit(e)
-                  }}>
-                    <i aria-hidden="true" class="thumbs up icon" onClick={event => event.persist()}></i>
-                  </Link>
-                </div>
+                }}
+                >
+                  CLICK HERE TO SUBMIT
+                </Link>
+
               </button>
             </form>
           </InfoWindow>
