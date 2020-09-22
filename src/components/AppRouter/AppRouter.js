@@ -28,7 +28,6 @@ export default function AppRouter() {
     async function getCurrentCoordinates() {
       await window.navigator.geolocation.getCurrentPosition(
         (position) => {
-          // console.log(position.coords.latitude, position.coords.longitude)
           setCenter({
             lat: position.coords.latitude,
             lng: position.coords.longitude

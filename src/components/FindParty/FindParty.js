@@ -40,7 +40,7 @@ export default function FindParty({center}) {
   const [allParties, setAllParties] = React.useState([]);
   const [parties, setParties] = React.useState([]);
   const [partyList, setPartyList] = React.useState([]);
-  const [theme, setTheme] = React.useState(mapStyles);
+  const [theme, setTheme] = React.useState(mapStyles2);
 
   const options = {
     styles: theme,
@@ -266,7 +266,7 @@ export default function FindParty({center}) {
             labelOrigin: new window.google.maps.Point(26, 55)
           }}
           label={{
-            color: 'orange', fontWeight: 'bolder', fontSize: '14px', text: '👆🏻 YOU 👆🏻 ', fontFamily: 'Avenir'
+            color: 'orange', fontWeight: 'bolder', fontSize: '14px', text: '👆🏻YOU ARE HERE👆🏻 ', fontFamily: 'Avenir'
           }}
           labelAnchor={new window.google.maps.Point(200, 0)}
         />

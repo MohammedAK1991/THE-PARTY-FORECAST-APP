@@ -321,11 +321,11 @@ export default function HostAParty({ userId, center }) {
                   SUBMIT
                 </div>
                 <div class="hidden content">
-                  <Link to='/submitted' className="ui button" onClick={(e) => {
+                  <Link to='/submitted' onClick={(e) => {
                     history.push('/submitted')
                     handleSubmit(e)
                   }}>
-                    <i aria-hidden="true" class="thumbs up icon"></i>
+                    <i aria-hidden="true" class="thumbs up icon" onClick={event => event.persist()}></i>
                   </Link>
                 </div>
               </button>
