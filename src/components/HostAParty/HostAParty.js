@@ -29,11 +29,6 @@ const options = {
   zoomControl: true,
 };
 
-const center = {
-  lat: 41.4107542,
-  lng: 2.1745088999999997,
-};
-
 const serverApiUrl =
   process.env.NODE_ENV === 'production'
     ? process.env.REACT_APP_API_URL_PROD
@@ -43,7 +38,8 @@ HostAParty.defaultProps = {
   userId: 123456789,
 }
 
-export default function HostAParty({ userId }) {
+export default function HostAParty({ userId, center }) {
+  console.log(center)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -73,7 +69,6 @@ export default function HostAParty({ userId }) {
   useEffect(() => {
     const getDataAxios = async () => {
       const { data: parties } = await axios.get(`${serverApiUrl}/parties/${userId || 1234567}`);
-      // const { isLoading, error, data: parties } = useQuery('fetchUsersParties', () => axios.get(`${serverApiUrl}/parties/${userId || 1234567}`))
       const filteredParties = parties.filter(party => Date.parse(party.date) > Date.now())
 
       setParties(filteredParties);
@@ -119,7 +114,7 @@ export default function HostAParty({ userId }) {
     setTimeout(() => {
       mapRef.current.panTo({ lat, lng });
       mapRef.current.setZoom(17);
-    }, 1000)
+    }, 500)
   }, []);
 
 
@@ -172,7 +167,6 @@ export default function HostAParty({ userId }) {
           const iconURL = generateIconURL(genre);
 
           party = { date, venue, artists, genre, latitude, longitude, iconURL, instagram, imageURL, userId }
-          // console.log('submitted', party)
 
           await axios.post(`${serverApiUrl}/parties`, {
             artists: artists,
@@ -366,7 +360,7 @@ export default function HostAParty({ userId }) {
           zIndex={10}
           animation={window.google.maps.Animation.BOUNCE}
           key={Math.random() * 100}
-          position={{ lat: 41.4107448, lng: 2.1745088999999997 }}
+          position={{ lat: center.lat , lng: center.lng }}
           icon={{
             url: `/kyle-2.png`,
             origin: new window.google.maps.Point(0, 0),
@@ -375,7 +369,7 @@ export default function HostAParty({ userId }) {
             labelOrigin: new window.google.maps.Point(26, 57)
           }}
           label={{
-            color: 'crimson', fontWeight: 'bolder', fontSize: '16px', text: 'You are here !', fontFamily: 'Avenir'
+            color: 'orange', fontWeight: 'bolder', fontSize: '14px', text: '👆🏻 YOU 👆🏻 ', fontFamily: 'Avenir'
           }}
           labelAnchor={new window.google.maps.Point(200, 0)}
         />

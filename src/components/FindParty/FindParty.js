@@ -18,16 +18,10 @@ import mapStyles2 from "../../MapThemes/mapStyles2.js";
 import mapStyles4 from "../../MapThemes/mapStyles4.js";
 import PartyList from '../PartyList/PartyList.js';
 
-
 const libraries = ["places"];
 const mapContainerStyle = {
   height: "100vh",
   width: "100vw",
-};
-
-const center = {
-  lat: 41.4056448,
-  lng: 2.1725184,
 };
 
 const serverApiUrl =
@@ -35,7 +29,7 @@ const serverApiUrl =
     ? process.env.REACT_APP_API_URL_PROD
     : process.env.REACT_APP_API_URL;
 
-export default function FindParty() {
+export default function FindParty({center}) {
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -46,8 +40,7 @@ export default function FindParty() {
   const [allParties, setAllParties] = React.useState([]);
   const [parties, setParties] = React.useState([]);
   const [partyList, setPartyList] = React.useState([]);
-  const [theme, setTheme] = React.useState(mapStyles2);
-
+  const [theme, setTheme] = React.useState(mapStyles);
 
   const options = {
     styles: theme,
@@ -58,18 +51,12 @@ export default function FindParty() {
   useEffect(() => {
     const getDataAxios = async () => {
       const { data: parties } = await axios.get(`${serverApiUrl}/parties`);
-      // const { isLoading, error, data: parties } = useQuery('fetchAllParties', () => axios.get(`${serverApiUrl}/parties`))
       const filteredParties = parties?.filter(party => Date.parse(party.date) > Date.now())
       setAllParties(filteredParties);
       setParties(filteredParties);
     }
     getDataAxios();
   }, []);
-
-  // const { isLoading, error, data: fecthedParties } = useQuery('fetchAllParties', () => axios.get(`${serverApiUrl}/parties`))
-  // const filteredParties = fecthedParties?.filter(party => Date.parse(party.date) > Date.now())
-  // setAllParties(filteredParties);
-  // setParties(filteredParties);
 
   useEffect(() => {
     const listener = e => {
@@ -268,7 +255,9 @@ export default function FindParty() {
           zIndex={10}
           animation={window.google.maps.Animation.BOUNCE}
           key={Math.random() * 1000}
-          position={{ lat: 41.4056448, lng: 2.1725184 }}
+          position={{
+            lat: center.lat, lng: center.lng
+          }}
           icon={{
             url: `/cartman-1.png`,
             origin: new window.google.maps.Point(0, 0),
@@ -277,7 +266,7 @@ export default function FindParty() {
             labelOrigin: new window.google.maps.Point(26, 55)
           }}
           label={{
-            color: 'orange', fontWeight: 'bold', fontSize: '14px', text: 'You are here!', fontFamily: 'Avenir'
+            color: 'orange', fontWeight: 'bolder', fontSize: '14px', text: '👆🏻 YOU 👆🏻 ', fontFamily: 'Avenir'
           }}
           labelAnchor={new window.google.maps.Point(200, 0)}
         />
@@ -366,7 +355,6 @@ function Locate({ panTo }) {
         e.preventDefault()
         window.navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log(position.coords.latitude, position.coords.longitude)
             panTo({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
@@ -380,4 +368,3 @@ function Locate({ panTo }) {
     </button>
   );
 }
-

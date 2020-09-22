@@ -11,6 +11,7 @@ const HostAParty = lazy(() => import('../HostAParty/HostAParty'));
 
 export default function AppRouter() {
   const [isSignedIn, setIsSignedIn] = React.useState(null);
+  const [center, setCenter] = React.useState({lat: null, lng: null})
   const [userId, setUserId] = React.useState(null);
 
   const handleSignIn = (userId) => {
@@ -22,6 +23,22 @@ export default function AppRouter() {
     setUserId(null);
     setIsSignedIn(false)
   }
+
+  React.useEffect(() => {
+    async function getCurrentCoordinates() {
+      await window.navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // console.log(position.coords.latitude, position.coords.longitude)
+          setCenter({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          })
+        },
+        () => null
+      );
+    }
+    getCurrentCoordinates();
+  }, []);
 
   return (
     <Router history={history} >
@@ -35,11 +52,12 @@ export default function AppRouter() {
         <Route path="/" exact={true}>
           <FindParty
             userId={userId}
+            center={center}
           />
         </Route>
         <Route path="/host/">
           <Suspense fallback={<div>Loading...</div>}>
-            <HostAParty userId={userId} />
+            <HostAParty userId={userId} center={center} />
           </Suspense>
         </Route>
         <Route path='/submitted/' component={SubmittedParty} />
