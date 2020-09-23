@@ -182,7 +182,7 @@ export default function FindParty({center}) {
               onChange={handleChange}
               style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
             >
-              <option value="NO" disabled selected>Genre ↡ </option>
+              <option value="NO" disabled selected> ↡ Genre </option>
               <option value="EDM">EDM</option>
               <option value="TECHNO">TECHNO</option>
               <option value="ROCK">ROCK</option>
@@ -199,7 +199,7 @@ export default function FindParty({center}) {
             onChange={handleDateChange}
             style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
-            <option value="" disabled selected>Date ↡ </option>
+            <option value="" disabled selected> ↡ Date </option>
             <option value="TODAY">TODAY</option>
             <option value="TOMORROW">TOMORROW</option>
             <option value="THIS WEEK">THIS WEEK</option>
@@ -212,7 +212,7 @@ export default function FindParty({center}) {
             onChange={handleThemeChange}
             style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
           >
-            <option value="" disabled selected>Theme ↡</option>
+            <option value="" disabled selected>↡ Theme </option>
             <option value="VINTAGE">VINTAGE</option>
             <option value="DEFAULT">DARK</option>
             <option value="APPLE">APPLE</option>
