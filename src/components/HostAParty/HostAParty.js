@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../../index.css';
 import Locate from '../Locate/Locate';
 import Search from '../Search/Search';
-import { Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react';
 import { generateIconURL } from '../../ApiClient';
 import { history } from '../history.js';
 
@@ -213,7 +213,7 @@ export default function HostAParty({ userId, center }) {
         style={{padding:0, marginTop:'0', marginBottom:0,backgroundColor: 'orange'}}
       >
         <Menu.Item
-          style={{width:'fit-content', padding:0}}
+          style={{width:'fit-content', marginTop:7}}
           name='locate'
         >
           <Locate panTo={panTo} id="locate_host." style={{top:10, left:100, width:'150px'}}/>

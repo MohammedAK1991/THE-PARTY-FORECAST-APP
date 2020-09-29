@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react'
 import GoogeAuth from '../GoogleAuth/GoogleAuth.js';
 
@@ -13,8 +12,8 @@ const Header = ({ handleSignIn, handleSignOut, setIsSignedIn, isSignedIn }) => {
     <Menu stackable style={{ backgroundColor: 'orange', paddingTop: '0em', fontWeight: 'bolder'}}>
       <Menu.Item href='/'>
           <h3>PARTY FORECAST APP</h3>
-          <span><img src='/cartman-1.png' width='50px' /> </span>
-          <span><img src='/kyle-2.png' width='50px' /> </span>
+          <span><img src='/cartman-1.png' width='50px' alt="eric"/> </span>
+          <span><img src='/kyle-2.png' width='50px' alt="kyle"/> </span>
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item
