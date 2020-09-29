@@ -9,7 +9,7 @@ No more endless searching on Facebook Events, dodgy websites, PARTY FORECAST is 
 
 ## Live Demo
 
-You can find a prototype of this App [here](https://peaceful-atoll-09560.herokuapp.com/)
+You can find a prototype of this App [here](https://party-forecast-app.herokuapp.com/)
 
 The Frontend and Backend are hosted on one [Heroku](heroku.com) Dyno, the database is served from the MongoDB Atlas Cloud.
 
