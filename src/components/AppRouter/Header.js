@@ -4,9 +4,7 @@ import GoogeAuth from '../GoogleAuth/GoogleAuth.js';
 
 const Header = ({ handleSignIn, handleSignOut, setIsSignedIn, isSignedIn }) => {
 
-  const[activeItem, setActiveItem] = React.useState('');
-
-  const handleItemClick = (e, { name }) => setActiveItem({ activeItem: name })
+  // const handleItemClick = (e, { name }) => setActiveItem({ activeItem: name })
 
   return (
     <Menu stackable style={{ backgroundColor: 'teal', paddingTop: '0em', fontWeight: 'bolder'}}>
@@ -18,8 +16,7 @@ const Header = ({ handleSignIn, handleSignOut, setIsSignedIn, isSignedIn }) => {
       <Menu.Menu position="right">
         <Menu.Item
           name='find'
-          // active={activeItem === 'find'}
-          onClick={handleItemClick}
+          // onClick={handleItemClick}
           href='/'
         >
           <h3> WHERE MA PARTIES AT ??</h3>
