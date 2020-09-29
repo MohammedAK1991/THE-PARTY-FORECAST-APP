@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../../index.css';
 import Locate from '../Locate/Locate';
 import Search from '../Search/Search';
+import { Menu } from 'semantic-ui-react'
 import { generateIconURL } from '../../ApiClient';
 import { history } from '../history.js';
 
@@ -208,13 +209,38 @@ export default function HostAParty({ userId, center }) {
 
   return (
     <div>
-      <div className="options" style={{ position: 'absolute', top: '2%', left: '18%', height: '1%', width: '45%', fontSize: 10, minWidth: '400px' }}>
+      {/* <div
+        className="options."
+        style={{ position: 'relative',
+          // top: '-10%', left: '18%', height: '1%', width: '45%', fontSize: 10,
+          minWidth: '400px'
+        }}
+      >
         <Search panTo={panTo} />
-      </div>
-      <Locate panTo={panTo} id="locate_host" />
+        <Locate panTo={panTo} id="locate_host." />
+      </div> */}
+      <Menu
+        style={{padding:0}}
+      >
+        <Menu.Item
+          style={{width:'5vw', padding:0}}
+          name='locate'
+          // active={activeItem === 'editorials'}
+          // onClick={this.handleItemClick}
+        >
+          <Locate panTo={panTo} id="locate_host." />
+        </Menu.Item>
+        <Menu.Item
+          name='search'
+          // active={activeItem === 'editorials'}
+          // onClick={this.handleItemClick}
+        >
+          <Search panTo={panTo}  style={{width:'90vw'}}/>
+        </Menu.Item>
+      </Menu>
 
       <GoogleMap
-        id="map"
+        id="map_host"
         mapContainerStyle={mapContainerStyle}
         zoom={16}
         center={center}
@@ -222,7 +248,7 @@ export default function HostAParty({ userId, center }) {
         onClick={onMapClick}
         onLoad={onMapLoad}
         clickableIcons={true}
-        style={{ display: 'none' }}
+        style={{ display: 'none.' }}
       >
         {parties ? parties.map((party) => (
           <Marker

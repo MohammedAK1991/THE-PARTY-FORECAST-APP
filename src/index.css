@@ -47,6 +47,7 @@ code {
 #ui_search {
     background-color: black;
     width: 38vw;
+    left: 0%;
     height: 5.6vh;
     padding-left: 0.5vw;
     margin-top: 6px;
@@ -65,10 +66,10 @@ code {
     left: 50%;
 }
 
-.search_host {
-    position: absolute;
+.search_host. {
+    position: relative;
     top: 3.6%;
-    left: 40%;
+    left: 0%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 450px;
