@@ -208,7 +208,7 @@ export default function HostAParty({ userId, center }) {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <div style={{marginTop:-14, padding:0, marginBottom:0}}>
       {/* <div
         className="options."
         style={{ position: 'relative',
@@ -220,27 +220,29 @@ export default function HostAParty({ userId, center }) {
         <Locate panTo={panTo} id="locate_host." />
       </div> */}
       <Menu
-        style={{padding:0}}
+        style={{padding:0, marginTop:'0', marginBottom:0,backgroundColor: 'orange'}}
       >
         <Menu.Item
-          style={{width:'5vw', padding:0}}
+          style={{width:'fit-content', padding:0}}
           name='locate'
           // active={activeItem === 'editorials'}
           // onClick={this.handleItemClick}
         >
-          <Locate panTo={panTo} id="locate_host." />
+          <Locate panTo={panTo} id="locate_host." style={{top:10, left:100, width:'150px'}}/>
         </Menu.Item>
-        <Menu.Item
-          name='search'
-          // active={activeItem === 'editorials'}
-          // onClick={this.handleItemClick}
-        >
-          <Search panTo={panTo}  style={{width:'90vw'}}/>
-        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item
+            name='search'
+            // active={activeItem === 'editorials'}
+            // onClick={this.handleItemClick}
+          >
+            <Search panTo={panTo}  style={{width:'90vw'}}/>
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
 
       <GoogleMap
-        id="map_host"
+        id="map_host."
         mapContainerStyle={mapContainerStyle}
         zoom={16}
         center={center}
@@ -248,7 +250,7 @@ export default function HostAParty({ userId, center }) {
         onClick={onMapClick}
         onLoad={onMapLoad}
         clickableIcons={true}
-        style={{ display: 'none.' }}
+        style={{ display: 'none' }}
       >
         {parties ? parties.map((party) => (
           <Marker

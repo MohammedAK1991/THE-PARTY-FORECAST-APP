@@ -44,7 +44,9 @@ export default function Search({ panTo, className }) {
   };
 
   return (
-    <div className={className || 'search.'}>
+    <div className={className || 'search.'}
+      style={{margin:-1, padding:-20}}
+    >
       <Combobox onSelect={handleSelect} className="ui input.">
         <ComboboxInput
           value={value}
@@ -53,9 +55,8 @@ export default function Search({ panTo, className }) {
           placeholder="Search for location or click on compass"
           className="ui_search."
           id="ui_search."
-          style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black', width:'50vw', height:'5vh' }}
+          style={{ fontFamily: 'Avenir', color: 'black', backgroundColor: 'white', width:'260px', height:'4vh', padding:'3px 10px'}}
         />
-        {/* <i aria-hidden="false" className="search icon large" id="search_icon"></i> */}
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
