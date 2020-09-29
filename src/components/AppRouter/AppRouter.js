@@ -2,12 +2,13 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { history } from '../../history.js';
 import '../../index.css';
-import FindParty from '../FindParty/FindParty';
+
 import Header from './Header.js'
 import SubmittedParty from '../SubmittedParty';
 import LoginPrompt from '../LoginPrompt'
 
 const HostAParty = lazy(() => import('../HostAParty/HostAParty'));
+const FindParty = lazy(() => import('../FindParty/FindParty'));
 
 export default function AppRouter() {
   const [isSignedIn, setIsSignedIn] = React.useState(null);
@@ -49,10 +50,9 @@ export default function AppRouter() {
           isSignedIn={isSignedIn}
         />
         <Route path="/" exact={true}>
-          <FindParty
-            userId={userId}
-            center={center}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <FindParty userId={userId} center={center} />
+          </Suspense>
         </Route>
         <Route path="/host/">
           <Suspense fallback={<div>Loading...</div>}>
