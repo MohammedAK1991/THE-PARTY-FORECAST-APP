@@ -27,11 +27,11 @@ const Header = ({ handleSignIn, handleSignOut, setIsSignedIn, isSignedIn }) => {
         </Menu.Item>
         {isSignedIn
         ?
-        (<Menu.Item to="/host" className="item">
+        (<Menu.Item href="/host" className="item">
           <h3>HOST</h3>
         </Menu.Item>)
         :
-        (<Menu.Item to="/loginPrompt" className="item">
+        (<Menu.Item hred="/loginPrompt" className="item">
           <h3>HOST</h3>
         </Menu.Item>)}
 

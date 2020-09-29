@@ -178,50 +178,53 @@ export default function FindParty({center}) {
           style={{width:'50px', padding:0}}
           name='locate'
         >
-          <Locate panTo={panTo} id="locate_host." style={{top:0, left:0, width:'150px'}}/>
+          <Locate panTo={panTo} id="locate_host." style={{top:-10, left:0, width:'150px', height:'150px'}}/>
+
         </Menu.Item>
-        <Menu.Item>
-          <label htmlFor="genre" style={{ color: 'yellow' }}>
+        <Menu.Menu position="right">
+          <Menu.Item>
+            <label htmlFor="genre" style={{ color: 'yellow' }}>
+              <select
+                placeholder="Select Genre"
+                name="genre"
+                onChange={handleChange}
+                style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
+              >
+                <option value="NO" disabled selected> ↡ Genre </option>
+                <option value="EDM">EDM</option>
+                <option value="TECHNO">TECHNO</option>
+                <option value="ROCK">ROCK</option>
+                <option value="JAZZ">JAZZ</option>
+                <option value="LATINO">LATINO</option>
+                <option value="ALL">ALL GENRES</option>
+              </select>
+            </label>
+          </Menu.Item>
+          <Menu.Item>
             <select
-              placeholder="Select Genre"
-              name="genre"
-              onChange={handleChange}
+              name="date"
+              onChange={handleDateChange}
               style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
             >
-              <option value="NO" disabled selected> ↡ Genre </option>
-              <option value="EDM">EDM</option>
-              <option value="TECHNO">TECHNO</option>
-              <option value="ROCK">ROCK</option>
-              <option value="JAZZ">JAZZ</option>
-              <option value="LATINO">LATINO</option>
-              <option value="ALL">ALL GENRES</option>
+              <option value="" disabled selected> ↡ Date </option>
+              <option value="TODAY">TODAY</option>
+              <option value="TOMORROW">TOMORROW</option>
+              <option value="THIS WEEK">THIS WEEK</option>
             </select>
-          </label>
-        </Menu.Item>
-        <Menu.Item>
-          <select
-            name="date"
-            onChange={handleDateChange}
-            style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
-          >
-            <option value="" disabled selected> ↡ Date </option>
-            <option value="TODAY">TODAY</option>
-            <option value="TOMORROW">TOMORROW</option>
-            <option value="THIS WEEK">THIS WEEK</option>
-          </select>
-        </Menu.Item>
-        <Menu.Item>
-          <select
-            name="theme"
-            onChange={handleThemeChange}
-            style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
-          >
-            <option value="" disabled selected>↡ Theme </option>
-            <option value="VINTAGE">VINTAGE</option>
-            <option value="DEFAULT">DARK</option>
-            <option value="APPLE">APPLE</option>
-          </select>
-        </Menu.Item>
+          </Menu.Item>
+          <Menu.Item>
+            <select
+              name="theme"
+              onChange={handleThemeChange}
+              style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
+            >
+              <option value="" disabled selected>↡ Theme </option>
+              <option value="VINTAGE">VINTAGE</option>
+              <option value="DEFAULT">DARK</option>
+              <option value="APPLE">APPLE</option>
+            </select>
+          </Menu.Item>
+        </Menu.Menu>
         <Menu.Menu position="right">
           <Menu.Item
             name='search'
