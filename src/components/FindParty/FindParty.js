@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { Image, Transformation } from 'cloudinary-react';
 import Search from '../Search/Search';
+import { Menu } from 'semantic-ui-react';
 
 import moment from "moment";
 import '../../index.css'
@@ -69,7 +70,7 @@ export default function FindParty({center}) {
       window.removeEventListener("keydown", listener);
     };
   },
-    []);
+  []);
 
   const handleChange = (e) => {
     const currentParties = [...allParties]
@@ -169,12 +170,17 @@ export default function FindParty({center}) {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
-      <div id="options">
-        <Locate panTo={panTo} id="locate_find" />
-        <Search panTo={panTo} className='search_find' />
-
-        <div className="filter">
+    <div style={{marginTop:-14, padding:0, marginBottom:0}}>
+      <Menu stackable
+        style={{padding:0, marginTop:'0', marginBottom:0,backgroundColor: 'orange'}}
+      >
+        <Menu.Item
+          style={{width:'50px', padding:0}}
+          name='locate'
+        >
+          <Locate panTo={panTo} id="locate_host." style={{top:0, left:0, width:'150px'}}/>
+        </Menu.Item>
+        <Menu.Item>
           <label htmlFor="genre" style={{ color: 'yellow' }}>
             <select
               placeholder="Select Genre"
@@ -191,9 +197,8 @@ export default function FindParty({center}) {
               <option value="ALL">ALL GENRES</option>
             </select>
           </label>
-        </div>
-
-        <div className="filterDate">
+        </Menu.Item>
+        <Menu.Item>
           <select
             name="date"
             onChange={handleDateChange}
@@ -204,9 +209,8 @@ export default function FindParty({center}) {
             <option value="TOMORROW">TOMORROW</option>
             <option value="THIS WEEK">THIS WEEK</option>
           </select>
-        </div>
-
-        <div className="filterTheme">
+        </Menu.Item>
+        <Menu.Item>
           <select
             name="theme"
             onChange={handleThemeChange}
@@ -217,12 +221,18 @@ export default function FindParty({center}) {
             <option value="DEFAULT">DARK</option>
             <option value="APPLE">APPLE</option>
           </select>
-        </div>
-
-      </div>
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item
+            name='search'
+          >
+            <Search panTo={panTo}  style={{width:'90vw'}}/>
+          </Menu.Item>
+          </Menu.Menu>
+      </Menu>
 
       <GoogleMap
-        id="map"
+        id="map."
         mapContainerStyle={mapContainerStyle}
         zoom={16}
         center={center}

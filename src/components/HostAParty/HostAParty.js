@@ -209,32 +209,18 @@ export default function HostAParty({ userId, center }) {
 
   return (
     <div style={{marginTop:-14, padding:0, marginBottom:0}}>
-      {/* <div
-        className="options."
-        style={{ position: 'relative',
-          // top: '-10%', left: '18%', height: '1%', width: '45%', fontSize: 10,
-          minWidth: '400px'
-        }}
-      >
-        <Search panTo={panTo} />
-        <Locate panTo={panTo} id="locate_host." />
-      </div> */}
       <Menu
         style={{padding:0, marginTop:'0', marginBottom:0,backgroundColor: 'orange'}}
       >
         <Menu.Item
           style={{width:'fit-content', padding:0}}
           name='locate'
-          // active={activeItem === 'editorials'}
-          // onClick={this.handleItemClick}
         >
           <Locate panTo={panTo} id="locate_host." style={{top:10, left:100, width:'150px'}}/>
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item
             name='search'
-            // active={activeItem === 'editorials'}
-            // onClick={this.handleItemClick}
           >
             <Search panTo={panTo}  style={{width:'90vw'}}/>
           </Menu.Item>
