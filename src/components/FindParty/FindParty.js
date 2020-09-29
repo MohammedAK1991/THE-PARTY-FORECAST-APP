@@ -174,23 +174,18 @@ export default function FindParty({center}) {
       <Menu stackable
         style={{padding:0, marginTop:'0', marginBottom:0,backgroundColor: 'orange'}}
       >
-        <Menu.Item
-          style={{width:'50px', padding:0}}
-          name='locate'
-        >
-          <Locate panTo={panTo} id="locate_host." style={{top:-10, left:0, width:'150px', height:'150px'}}/>
-
-        </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item>
+        <Menu.Menu position="left" style={{fontSize:'1.1rem',  fontFamily: 'Avenir'}}>
+          <Menu.Item
+            // style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'transparent', height:'33px' , margin:0, padding:5, width:'fit-content', top:0, paddingRight:5}}
+          >
             <label htmlFor="genre" style={{ color: 'yellow' }}>
               <select
                 placeholder="Select Genre"
                 name="genre"
                 onChange={handleChange}
-                style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
+                style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black', height:'30px' , margin:0, padding:0}}
               >
-                <option value="NO" disabled selected> ↡ Genre </option>
+                <option value="NO" disabled selected> ↡ Filter by Genre </option>
                 <option value="EDM">EDM</option>
                 <option value="TECHNO">TECHNO</option>
                 <option value="ROCK">ROCK</option>
@@ -204,9 +199,9 @@ export default function FindParty({center}) {
             <select
               name="date"
               onChange={handleDateChange}
-              style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
+              style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black', height:'30px' , margin:0, padding:0}}
             >
-              <option value="" disabled selected> ↡ Date </option>
+              <option value="" disabled selected> ↡ Filter by Date </option>
               <option value="TODAY">TODAY</option>
               <option value="TOMORROW">TOMORROW</option>
               <option value="THIS WEEK">THIS WEEK</option>
@@ -216,9 +211,9 @@ export default function FindParty({center}) {
             <select
               name="theme"
               onChange={handleThemeChange}
-              style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black' }}
+              style={{ fontFamily: 'Avenir', color: 'white', backgroundColor: 'black', height:'30px' , margin:0, padding:0}}
             >
-              <option value="" disabled selected>↡ Theme </option>
+              <option value="" disabled selected>↡ Filter by Theme </option>
               <option value="VINTAGE">VINTAGE</option>
               <option value="DEFAULT">DARK</option>
               <option value="APPLE">APPLE</option>
@@ -227,9 +222,16 @@ export default function FindParty({center}) {
         </Menu.Menu>
         <Menu.Menu position="right">
           <Menu.Item
+            style={{width:'50px', padding:0}}
+            name='locate'
+          >
+            <Locate panTo={panTo} id="locate_host." style={{top:-10, left:0, width:'150px', height:'150px', padding:'100px'}}/>
+          </Menu.Item>
+          <Menu.Item
             name='search'
           >
-            <Search panTo={panTo}  style={{width:'90vw'}}/>
+            {/* <Locate panTo={panTo} id="locate_host." style={{top:0, left:0, width:'100px', height:'100px', margin:'10px'}}/> */}
+            <Search panTo={panTo}  style={{maxWidth:'fit-content'}}/>
           </Menu.Item>
           </Menu.Menu>
       </Menu>
